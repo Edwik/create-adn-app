@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
+import withRequestHandler from '../../hoc/withRequestHandler'
+
 import ExampleListTemplate from './components/templates/ExampleList';
 
 const Example = (props) => {
@@ -17,7 +19,9 @@ const mapStateToprops = (state, props) => {
 }
 
 
-export default connect(
-  mapStateToprops,
-  {}
-)(Example)
+export default withRequestHandler(
+  connect(
+    mapStateToprops,
+    {}
+  )(Example)
+)
