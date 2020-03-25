@@ -10,9 +10,9 @@ function AppNavigator() {
     <Router>
       <Switch>
         {
-          Pages.map( (route, index) => {
+          Pages.map( (page, index) => {
             return (
-              <Route exact path={`/${route.name}`} component={ route } key={index} />
+              <Route exact path={`/${page.path}`} component={ page.component } key={index} />
             )
           })
         }

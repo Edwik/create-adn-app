@@ -3,6 +3,8 @@ import { View, ActivityIndicator } from 'react-native'
 import * as Font from 'expo-font'
 
 import AppNavigator from './src/navigation/AppNavigator'
+import { Provider } from 'react-redux'
+import store from './src/store'
 
 export default function App() {
 
@@ -36,9 +38,10 @@ export default function App() {
   },[Font.isLoaded])
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      { loading ? <ActivityIndicator/> : <AppNavigator/> }
-    </View>
-    
+    <Provider store={store}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        { loading ? <ActivityIndicator/> : <AppNavigator/> }
+      </View>
+    </Provider>
   );
 }

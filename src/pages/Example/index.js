@@ -1,11 +1,23 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { connect } from 'react-redux';
 
-export default function Example() {
+import ExampleListTemplate from './components/templates/ExampleList';
+
+const Example = (props) => {
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Example</Text>
-    </View>
-  );
+    <ExampleListTemplate />
+  )
 }
+
+const mapStateToprops = (state, props) => {
+  return {
+    USERS: state.userReducers.users
+  }
+}
+
+
+export default connect(
+  mapStateToprops,
+  {}
+)(Example)
