@@ -3,13 +3,12 @@ import Pages from '../pages/export'
 export const getReducers = () => {
   let reducersObject = {}
   Pages.forEach(page => {
-    try {
-      const pageReducers = require(`../pages/${page.name}/reducers`)
+    if (page.reducers) {
       reducersObject = {
         ...reducersObject,
-        ...pageReducers.default
+        ...page.reducers.default
       }
-    } catch(e) {}
+    }
   })
   return reducersObject
 }
@@ -18,10 +17,9 @@ export const getSagas = () => {
   const sagasList = []
 
   Pages.forEach(page => {
-    try {
-      const pageSaga = require(`../pages/${page.name}/saga`)
-      pageSaga.default.forEach(saga => sagasList.push(saga))
-    } catch(e) {}
+    if (page.sagas) {
+      page.sagas.default.forEach(saga => sagasList.push(saga))
+    }
   })
 
   return sagasList

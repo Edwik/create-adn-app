@@ -5,7 +5,9 @@ export default [
   {
     name: 'Example',
     path: 'example',
-    component: Example
+    component: Example,
+    reducers: require('./Example/reducers'),
+    sagas: require('./Example/saga')
   },
   {
     name: 'Login',
