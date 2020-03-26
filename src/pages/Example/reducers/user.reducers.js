@@ -1,4 +1,4 @@
-import actionsConstants from '../actions/actions.constants'
+import actionsConstants from '../../../config/constants/actions.constants'
 
 const initialState = {
   users: []

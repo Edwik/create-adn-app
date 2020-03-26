@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Route, Switch } from './AppRouterSources'
 
 import BasicPageComponent from './../components/BasicPageComponent'
-import Pages from '../pages/export'
+import Pages from '../pages/exportPages'
 
 function AppNavigator() {
 

@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import actionsConstants from '../actions/actions.constants'
 import userServices from '../services/user.services'
+import actionsConstants from '../../../config/constants/actions.constants'
 
 function * fetchUsers () {
   try{

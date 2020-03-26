@@ -2,13 +2,14 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import createSagaMiddleware from 'redux-saga'
 
-import { getReducers, getSagas } from './storeContent'
+import reducers from '../pages/exportReducers'
+import sagas from '../pages/exportSagas'
 
 // Create saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
 // Combine reducers
-const reducersCombined = combineReducers(getReducers())
+const reducersCombined = combineReducers(reducers)
 
 // Create store
 const store = createStore(
@@ -17,7 +18,7 @@ const store = createStore(
 )
 
 // Running the sagas
-getSagas().forEach(saga =>{
+sagas.forEach(saga =>{
   sagaMiddleware.run(saga)
 })
 

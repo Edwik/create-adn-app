@@ -14,12 +14,23 @@ const withRequestHandler = (WrappedComponent) => (
     const responseHandler = (data ,onSuccessFunction, onFailFunction) => {
       return useEffect(() => {
         if(data && data.status === 200) {
+          onSuccessRequest()
           onSuccessFunction()
         } else {
+          onFailRequest()
           onFailFunction()
         }
         setLoading(false)
       }, [data])
+    }
+
+    const onSuccessRequest = () => {
+      // Show success notification
+    }
+
+    const onFailRequest = () => {
+      // Show error notification
+      // Send error log
     }
 
     return (

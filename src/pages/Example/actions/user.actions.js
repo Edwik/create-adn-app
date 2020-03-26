@@ -1,4 +1,4 @@
-import actionsConstants from './actions.constants'
+import actionsConstants from '../../../config/constants/actions.constants'
 
 export const FetchUsers  = () =>{
   return{
