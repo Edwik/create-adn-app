@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, Route, Switch } from './AppRouterSources'
 
 import BasicPageComponent from './../components/BasicPageComponent'
-import Pages from '../pages/export'
+import Pages from '../pages/exportPages'
 
 function AppNavigator() {
 
@@ -10,9 +10,9 @@ function AppNavigator() {
     <Router>
       <Switch>
         {
-          Pages.map( (route, index) => {
+          Pages.map( (page, index) => {
             return (
-              <Route exact path={`/${route.name}`} component={ route } key={index} />
+              <Route exact path={`/${page.path}`} component={ page.component } key={index} />
             )
           })
         }

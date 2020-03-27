@@ -5,6 +5,9 @@ import * as Font from 'expo-font'
 
 import AppNavigator from './src/navigation/AppNavigator'
 console.disableYellowBox = true;
+import { Provider } from 'react-redux'
+import store from './src/store'
+
 export default function App() {
 
   const [loading, setLoading] = useState(true)
@@ -31,15 +34,16 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      { loading ? (
-        <AppLoading
-          startAsync={loadFonts}
-          onError={()=>console.log('error loading page')}
-          onFinish={() => setLoading(false)}
-        />
-      ): <AppNavigator/> }
-    </View>
-    
+    <Provider store={store}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        { loading ? (
+          <AppLoading
+            startAsync={loadFonts}
+            onError={()=>console.log('error loading page')}
+            onFinish={() => setLoading(false)}
+          />
+        ): <AppNavigator/> }
+      </View>
+    </Provider>
   );
 }
