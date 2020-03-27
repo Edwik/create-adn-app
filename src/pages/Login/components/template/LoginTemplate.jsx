@@ -1,35 +1,36 @@
 import React from 'react'
 import { View, Text, ScrollView, Dimensions, Button } from 'react-native'
 
-import { THEMES } from './../../../../utils/themes'
+import Image from './../../../../components/Image'
+import InputComponent from './../../../../components/Input'
+
 let SCREEN_WIDTH = Dimensions.get('window').width
 let SCREEN_HEIGHT = Dimensions.get('window').height
-
 let WIDTH = SCREEN_WIDTH*0.9
 
 export default function LoginTemplate(props) {
 
   const FormComponent = (props) => {
     return(
-      <View style={{ width: WIDTH, backgroundColor: THEMES.FRAME_THEME.PRIMARY_COLOR, maxWidth: 400, alignItems: 'center', paddingVertical: 20, paddingHorizontal: 20 }}>
+      <View style={{ width: WIDTH, maxWidth: 400, alignItems: 'center', paddingVertical: 20, paddingHorizontal: 20 }}>
         
-        <View style={{ backgroundColor: THEMES.FRAME_THEME.ACCENT_COLOR, width: '100%', justifyContent: 'center', alignItems: 'center', height: 60, marginBottom: 8 }}>
-          <Text style={{color: THEMES.FRAME_THEME.TEXT_AND_ICONS}}>Title</Text>
+        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', height: 60, marginBottom: 58 }}>
+          <Image name={'logo'}/>
         </View>
 
-        <View style={{ backgroundColor: THEMES.FRAME_THEME.ACCENT_COLOR, width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 8 }}>
-          <Text>Email input</Text>
+        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', height: 55, marginBottom: 28 }}>
+          <InputComponent/>
         </View>
 
-        <View style={{ backgroundColor: THEMES.FRAME_THEME.ACCENT_COLOR, width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 8 }}>
+        <View style={{ backgroundColor: 'grey', width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 28 }}>
           <Text>Password</Text>
         </View>
 
-        <View style={{ backgroundColor: THEMES.FRAME_THEME.ACCENT_COLOR, width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 8 }}>
+        <View style={{ backgroundColor: 'grey', width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 28 }}>
           <Text> Remember me! </Text>
         </View>
 
-        <View style={{ backgroundColor: THEMES.FRAME_THEME.ACCENT_COLOR, width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 8 }}>
+        <View style={{ backgroundColor: 'grey', width: '100%', justifyContent: 'center', alignItems: 'center', height: 40, marginBottom: 28 }}>
           <Text> Button </Text>
         </View>
 

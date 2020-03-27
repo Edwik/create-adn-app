@@ -1,43 +1,44 @@
+import { AppLoading } from 'expo';
 import React, { useEffect, useState } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import * as Font from 'expo-font'
 
 import AppNavigator from './src/navigation/AppNavigator'
-
+console.disableYellowBox = true;
 export default function App() {
 
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  const loadFonts = async () => {
+    await Font.loadAsync({
 
-    Font.loadAsync({
+      'roboto-regular': require('./assets/fonts/Roboto/Roboto-Regular.ttf'),
+      'roboto-medium': require('./assets/fonts/Roboto/Roboto-Medium.ttf'),
+      'roboto-bold': require('./assets/fonts/Roboto/Roboto-Bold.ttf'),
 
-      'roboto-thin': require('./assets/fonts/Roboto/Roboto-Thin.otf'),
-      'roboto-light': require('./assets/fonts/Roboto/Roboto-Light.otf'),
-      'roboto-regular': require('./assets/fonts/Roboto/Roboto-Regular.otf'),
-      'roboto-medium': require('./assets/fonts/Roboto/Roboto-Medium.otf'),
-      'roboto-bold': require('./assets/fonts/Roboto/Roboto-Bold.otf'),
-      'roboto-black': require('./assets/fonts/Roboto/Roboto-Black.otf')
+      'poppins-regular': require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
+      'poppins-medium': require('./assets/fonts/Poppins/Poppins-Medium.ttf'),
+      'poppins-bold': require('./assets/fonts/Poppins/Poppins-Bold.ttf')
 
     }).then(()=>{
       setLoading(false)
 
     }).catch((error)=>{
       console.error('Error: ', error)
+      setLoading(false)
 
     })
-    setLoading(false)
-
-  },[])
-
-  useEffect(()=>{
-    setLoading(false)
-
-  },[Font.isLoaded])
+  }
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      { loading ? <ActivityIndicator/> : <AppNavigator/> }
+      { loading ? (
+        <AppLoading
+          startAsync={loadFonts}
+          onError={()=>console.log('error loading page')}
+          onFinish={() => setLoading(false)}
+        />
+      ): <AppNavigator/> }
     </View>
     
   );

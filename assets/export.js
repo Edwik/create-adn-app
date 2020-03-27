@@ -1,5 +1,7 @@
-import logo from './images/logo.png'
+import logo from './images/logo.jpg'
+import noImage from './images/no-image.png'
 
 export default { 
-  logo 
+  logo,
+  noImage
 }

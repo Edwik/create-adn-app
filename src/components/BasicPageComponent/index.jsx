@@ -9,7 +9,7 @@ export default function BasicPageComponent(props) {
   const HeaderComponent = () => {
     return(
       <View>
-        <Image resizeMode='contain' source={Assets.logo} style={{ width: 150, height: 150 }} />
+        <Image resizeMode='contain' source={Assets.logo} style={{ width: 250, height: 100 }} />
       </View>
     )
   }
@@ -18,11 +18,11 @@ export default function BasicPageComponent(props) {
     return(
       <View>
 
-        <Text style={{ fontSize: 21, textAlign: 'center', fontFamily: 'roboto-bold', color: '#7E1499' }}>
+        <Text style={{ fontSize: 21, textAlign: 'center', fontFamily: 'roboto-bold' }}>
           {props.title}
         </Text>
 
-        <Text style={{ textAlign:'center', marginTop: 5, maxWidth: 300 }}>
+        <Text style={{ textAlign:'center', marginTop: 15, maxWidth: 400 }}>
             {props.description}
         </Text>
 
