@@ -5,15 +5,12 @@ import { Strings } from '../../tools/lang'
 import { ArrayString } from '../../tools/ArrayStrings'
 import Theme from './../../tools/Theme'
 import Identity from './../../utils/Identity'
-import nextId,{ useId } from "react-id-generator";
 
 export default function Txt(props) { 
 
-  const Key = nextId('test-id-');
-
   useEffect( ()=> {
    
-    ArrayString(Key, props.Text, props.avoid)
+    ArrayString(props.Key, props.text, props.avoid)
   },[])
 
   const toCapitalize = (text) => {
@@ -25,21 +22,22 @@ export default function Txt(props) {
   }
 
   return (
-    <Text id={Key} style={Identity.Font[props.identity], {color: Theme[props.color]} }>
+    <Text id={props.Key} style={Identity.Font[props.identity], {color: Theme[props.color]} }>
       {
         Strings === null ? props.isCapitalize ? toCapitalize(props.text)
-        : this.props.text : Strings[Key]
+        : props.text : Strings[props.Key]
       }
     </Text>
   )
 }
 
 Txt.propTypes = {
-  text: PropTypes.string,       //text of the component.
-  isCapitalize: PropTypes.bool, // if you wish capitalize the text.
-  avoid: PropTypes.bool,        //permite repetirse esta key, yes or no.
-  identity: PropTypes.string,   //style of text
-  color: PropTypes.string       //color of text
+  Key: PropTypes.string,              //Key
+  text: PropTypes.string.isRequired,  //text of the component.
+  isCapitalize: PropTypes.bool,       //if you wish capitalize the text.
+  avoid: PropTypes.bool,              //permite repetirse esta Key, yes or no.
+  identity: PropTypes.string,         //style of text
+  color: PropTypes.string             //color of text
 };
 
 Txt.defaultProps = {

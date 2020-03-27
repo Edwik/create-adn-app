@@ -24,9 +24,6 @@ export default function InputComponent(props) {
         style={{...props.style}, styles.input}
         placeholder='Enter your email'
       />
-      <Txt text={'Text Prueba 1'} avoid={true}/>
-      <Txt text={'Text Prueba 2'}/>
-      <Txt text={'Text Prueba 3'}/>
     </View>
   )
 }
