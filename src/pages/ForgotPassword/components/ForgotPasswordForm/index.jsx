@@ -7,7 +7,12 @@ import InputComponent from './../../../../components/Input'
 import ButtonComponent from '../../../../components/Button'
 
 export default function ForgotPasswordForm(props) {
-  const { loading, onForgotPassword } = props
+  const {
+    loading,
+    error,
+    message,
+    onForgotPassword
+  } = props
   const [email, setEmail] = useState('')
 
   const onPressForgotPassword = (e) => {
@@ -75,10 +80,14 @@ const styles = StyleSheet.create({
 
 ForgotPasswordForm.propTypes = {
   loading: PropTypes.bool,
+  error: PropTypes.bool,
+  message: PropTypes.string,
   onForgotPassword: PropTypes.func.isRequired
 }
 
 ForgotPasswordForm.defaultProps = {
   loading: false,
+  error: false,
+  message: '',
   onForgotPassword: () => {}
 }
