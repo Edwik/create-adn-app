@@ -6,7 +6,14 @@ import { Button } from 'react-native-elements'
 import Theme from '../../tools/Theme'
 
 export default function ButtonComponent (props) {
-  const { buttonStyle, title, onPress, type } = props
+  const {
+    buttonStyle,
+    title,
+    onPress,
+    type,
+    loading
+  } = props
+
   return (
     <Button
       buttonStyle={[
@@ -16,6 +23,7 @@ export default function ButtonComponent (props) {
       titleStyle={styles.textStyle}
       type={type}
       title={title}
+      loading={loading}
       onPress={onPress}
     />
   )
@@ -39,6 +47,7 @@ ButtonComponent.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string.isRequired,
   buttonStyle: PropTypes.instanceOf(styles.button),
+  loading: PropTypes.bool,
   onPress: PropTypes.func
 }
 
@@ -46,5 +55,6 @@ ButtonComponent.defaultProps = {
   type: 'solid',
   title: '',
   buttonStyle: null,
+  loading: false,
   onPress: () => {}
 }

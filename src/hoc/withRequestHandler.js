@@ -9,6 +9,7 @@ const withRequestHandler = (WrappedComponent) => (
   props => {
     // Hook to handle a loading state in the WrappedComponent
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(false)
 
     /**
      * Executes the requestFunction when the component is mounted.
@@ -28,13 +29,13 @@ const withRequestHandler = (WrappedComponent) => (
      * @param {*} onSuccessFunction 
      * @param {*} onFailFunction 
      */
-    const responseHandler = (data ,onSuccessFunction, onFailFunction) => {
-      return useEffect(async () => {
+    const responseHandler = (data, onSuccessFunction, onFailFunction) => {
+      return useEffect(() => {
         if(data && data.status === 200) {
-          await onSuccessRequest()
+          onSuccessRequest()
           onSuccessFunction()
         } else {
-          await onFailRequest()
+          onFailRequest()
           onFailFunction()
         }
         setLoading(false)
@@ -42,10 +43,12 @@ const withRequestHandler = (WrappedComponent) => (
     }
 
     const onSuccessRequest = async () => {
+      setError(false)
       // Show success notification
     }
 
     const onFailRequest = async () => {
+      setError(true)
       // Show error notification
       // Send error log
     }
@@ -54,6 +57,8 @@ const withRequestHandler = (WrappedComponent) => (
       <WrappedComponent
         loading={loading}
         setLoading={setLoading}
+        error={error}
+        setError={setError}
         initRequest={initRequest}
         responseHandler={responseHandler}
         {...props}

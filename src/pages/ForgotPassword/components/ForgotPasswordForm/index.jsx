@@ -7,7 +7,16 @@ import InputComponent from './../../../../components/Input'
 import ButtonComponent from '../../../../components/Button'
 
 export default function ForgotPasswordForm(props) {
+  const { loading, onForgotPassword } = props
   const [email, setEmail] = useState('')
+
+  const onPressForgotPassword = (e) => {
+    if (email) {
+      onForgotPassword({
+        email
+      })
+    }
+  }
 
   return(
     <View style={styles.container}>
@@ -37,6 +46,8 @@ export default function ForgotPasswordForm(props) {
       <View style={styles.buttonContainer}>
         <ButtonComponent
           title='Send Email'
+          loading={loading}
+          onPress={onPressForgotPassword}
         />
       </View>
     </View>
@@ -63,11 +74,11 @@ const styles = StyleSheet.create({
 })
 
 ForgotPasswordForm.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string
+  loading: PropTypes.bool,
+  onForgotPassword: PropTypes.func.isRequired
 }
 
 ForgotPasswordForm.defaultProps = {
-  title: 'Not Found',
-  description: 'The component is not has found. If you need help pleaase contact with support.'
+  loading: false,
+  onForgotPassword: () => {}
 }

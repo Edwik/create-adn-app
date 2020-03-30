@@ -1,11 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 
-import forgotPasswordServices from '../services/forgotPassword.services'
+import ForgotPasswordServices from '../services/forgotPassword.services'
 import actionsConstants from '../../../config/constants/actions.constants'
 
 function * sendForgotPasswordEmail(action) {
   try {
-    const data = yield call(forgotPasswordServices.sendForgotPasswordEmail, action.payload)
+    const data = yield call(ForgotPasswordServices.forgotPassword, action.payload)
+    console.log(data)
     if(data.status !== 200){
       return yield put({
         type: actionsConstants.failSendForgotPasswordEmail,
