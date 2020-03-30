@@ -1,8 +1,9 @@
-import React,{ useState, useRef, useEffect } from 'react'
-import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native'
-import { useId } from "react-id-generator";
+import React,{ useState } from 'react'
+import { StyleSheet, View, Dimensions, TextInput } from 'react-native'
+import PropTypes from 'prop-types'
+import { useId } from 'react-id-generator';
 import Icon from '../Icons';
-import Txt from './../Txt'
+
 import './style.css'
 
 let SCREEN_WIDTH = Dimensions.get('window').width
@@ -11,18 +12,25 @@ let WIDTH = SCREEN_WIDTH*0.9
 
 export default function InputComponent(props) { 
 
-  const [value, setValue] = useState('')
+  const { name, value, onChange, icon } = props
+
   const id = useId();
 
   return(
     <View style={styles.container}>
-      <Icon name="User" height="24" width="24" color='red' style={styles.icon}/>
+      {icon
+        ? <Icon
+          name={icon}
+          height='20'
+          style={styles.icon}
+        />
+        : null}
       <TextInput
         id={id}
-        onChangeText={text => setValue(text)}
+        onChangeText={text => onChange(name, text)}
         value={value}
         style={{...props.style}, styles.input}
-        placeholder='Enter your email'
+        placeholder={props.placeholder}
       />
     </View>
   )
@@ -34,7 +42,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '100%',
-    height: '100%',
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -44,11 +52,26 @@ const styles = StyleSheet.create({
     borderRadius: 4
   },
   input: {
-    outline: 'none',
     width: '100%',
     height: '100%',
-    fontSize: 16,
-    paddingLeft: 10
-    
+    fontSize: 16
   }
-});
+})
+
+InputComponent.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  icon: PropTypes.string,
+  style: PropTypes.instanceOf(styles.container),
+  onChange: PropTypes.func
+}
+
+InputComponent.defaultProps = {
+  name: '',
+  value: '',
+  placeholder: '',
+  icon: '',
+  style: null,
+  onChange: () => {}
+}

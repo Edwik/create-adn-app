@@ -7,6 +7,8 @@ import AppNavigator from './src/navigation/AppNavigator'
 console.disableYellowBox = true;
 import { Provider } from 'react-redux'
 import store from './src/store'
+import { ElementsTheme } from './src/tools/Theme';
+import { ThemeProvider } from 'react-native-elements';
 
 export default function App() {
 
@@ -35,15 +37,17 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        { loading ? (
-          <AppLoading
-            startAsync={loadFonts}
-            onError={()=>console.log('error loading page')}
-            onFinish={() => setLoading(false)}
-          />
-        ): <AppNavigator/> }
-      </View>
+      <ThemeProvider theme={ElementsTheme}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          { loading ? (
+            <AppLoading
+              startAsync={loadFonts}
+              onError={()=>console.log('error loading page')}
+              onFinish={() => setLoading(false)}
+            />
+          ): <AppNavigator/> }
+        </View>
+      </ThemeProvider>
     </Provider>
   );
 }
