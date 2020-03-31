@@ -1,10 +1,8 @@
 import React,{ useState } from 'react'
 import { StyleSheet, View, Dimensions, TextInput } from 'react-native'
 import PropTypes from 'prop-types'
-import { useId } from 'react-id-generator';
-import Icon from '../Icons';
-
-import './style.css'
+import { useId } from 'react-id-generator'
+import Icon from '../Icons'
 
 let SCREEN_WIDTH = Dimensions.get('window').width
 let SCREEN_HEIGHT = Dimensions.get('window').height
