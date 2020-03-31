@@ -22,7 +22,7 @@ export default function Txt(props) {
   }
 
   return (
-    <Text id={props.Key} style={Identity.Font[props.identity], {color: Theme[props.color]} }>
+    <Text id={props.Key} style={Identity.Font[props.identity], {color: Theme[props.color],}, props.style }>
       {
         Strings === null ? props.isCapitalize ? toCapitalize(props.text)
         : props.text : Strings[props.Key]

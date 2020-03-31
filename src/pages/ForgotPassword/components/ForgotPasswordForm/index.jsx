@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Assets from './../../../../../assets/export'
 import InputComponent from './../../../../components/Input'
 import ButtonComponent from '../../../../components/Button'
+import Txt from '../../../../components/Txt'
 
 export default function ForgotPasswordForm(props) {
   const {
@@ -31,12 +32,20 @@ export default function ForgotPasswordForm(props) {
         style={styles.icon}
       />
 
-      <Text style={{ textAlign:'center'}}>
-        Please enter your email address.
-      </Text>
-      <Text style={{ textAlign:'center'}}>
-        We will send you an email to reset your password.
-      </Text>
+      <Txt
+        style={styles.subtitle}
+        Key='forgotPasswordSubtitle1'
+        text='Please enter your email address.'
+        isCapitalize={false}
+        identity='subtitle'
+      />
+      <Txt
+        style={styles.subtitle}
+        Key='forgotPasswordSubtitle2'
+        text='We will send you an email to reset your password.'
+        isCapitalize={false}
+        identity='subtitle'
+      />
 
       <View style={styles.inputContainer}>
         <InputComponent
@@ -62,6 +71,9 @@ export default function ForgotPasswordForm(props) {
 const styles = StyleSheet.create({
   container: {
 		alignItems: 'center'
+  },
+  subtitle: {
+    textAlign: 'center'
   },
   icon:{
     width: 250,

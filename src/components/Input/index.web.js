@@ -9,20 +9,33 @@ let SCREEN_WIDTH = Dimensions.get('window').width
 let SCREEN_HEIGHT = Dimensions.get('window').height
 let WIDTH = SCREEN_WIDTH*0.9
 
-export default function InputComponent(props) { 
+export default function InputComponent(props) {
+  const { name, value, onChange, icon, placeholder } = props 
 
-  const [value, setValue] = useState('')
   const id = useId();
 
   return(
     <View style={styles.container}>
-      <Icon name="User" height="24" width="24" color='red' style={styles.icon}/>
+      {icon
+        ? <Icon
+          name={icon}
+          height='20'
+          width='20'
+          style={styles.icon}
+        />
+        : null}
       <TextInput
         id={id}
-        onChangeText={text => setValue(text)}
+        onChangeText={text => onChange(name, text)}
         value={value}
-        style={{...props.style}, styles.input}
-        placeholder='Enter your email'
+        style={[
+          props.style,
+          styles.input,
+          {
+            marginLeft: icon ? 60 : 25
+          }
+        ]}
+        placeholder={placeholder}
       />
     </View>
   )
@@ -30,11 +43,12 @@ export default function InputComponent(props) {
 
 const styles = StyleSheet.create({
   icon:{
-    marginHorizontal: 25
+    position: 'absolute',
+    left: 20
   },
   container: {
     width: '100%',
-    height: '100%',
+    height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -44,11 +58,8 @@ const styles = StyleSheet.create({
     borderRadius: 4
   },
   input: {
-    outline: 'none',
     width: '100%',
     height: '100%',
-    fontSize: 16,
-    paddingLeft: 10
-    
+    fontSize: 16
   }
 });

@@ -10,7 +10,7 @@ let WIDTH = SCREEN_WIDTH*0.9
 
 export default function InputComponent(props) { 
 
-  const { name, value, onChange, icon } = props
+  const { name, value, onChange, icon, placeholder } = props
 
   const id = useId();
 
@@ -20,6 +20,7 @@ export default function InputComponent(props) {
         ? <Icon
           name={icon}
           height='20'
+          width='20'
           style={styles.icon}
         />
         : null}
@@ -27,8 +28,14 @@ export default function InputComponent(props) {
         id={id}
         onChangeText={text => onChange(name, text)}
         value={value}
-        style={{...props.style}, styles.input}
-        placeholder={props.placeholder}
+        style={[
+          props.style,
+          styles.input,
+          {
+            marginLeft: icon ? 100 : 40
+          }
+        ]}
+        placeholder={placeholder}
       />
     </View>
   )
@@ -36,7 +43,8 @@ export default function InputComponent(props) {
 
 const styles = StyleSheet.create({
   icon:{
-    marginHorizontal: 25
+    position: 'absolute',
+    left: 20
   },
   container: {
     width: '100%',

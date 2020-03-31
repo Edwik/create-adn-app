@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, SafeAreaView } from 'react-native'
 import PropTypes from 'prop-types'
 
 import ForgotPasswordForm from './../../ForgotPasswordForm'
@@ -14,30 +14,36 @@ export default function ForgotPasswordTemplate (props) {
   } = props
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <AuthHeader/>
+    <SafeAreaView style={styles.safeAreaContainer}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <AuthHeader/>
+        </View>
+        <View>
+          <ForgotPasswordForm
+            loading={loading}
+            error={error}
+            message={message}
+            onForgotPassword={onForgotPassword}
+          />
+        </View>
       </View>
-      <View>
-        <ForgotPasswordForm
-          loading={loading}
-          error={error}
-          message={message}
-          onForgotPassword={onForgotPassword}
-        />
-      </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
+  safeAreaContainer: {
+    height: '100%'
+  },
   container: {
     height: '100%',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    maxWidth: 325
   },
   header: {
     position: 'absolute',
-    top: '0',
+    top: 50,
     width: '100%'
   }
 })
