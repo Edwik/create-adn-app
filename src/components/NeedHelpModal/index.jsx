@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   container: {},
   icons: {
     width: 20,
-    heigth: 20
+    height: 20
   }
 })
 

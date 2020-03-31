@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
   },
   icons: {
     width: 20,
-    heigth: 20
+    height: 20
   }
 })
