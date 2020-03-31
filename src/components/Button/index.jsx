@@ -47,7 +47,6 @@ ButtonComponent.propTypes = {
   type: PropTypes.string,
   title: PropTypes.string.isRequired,
   buttonStyle: PropTypes.instanceOf(styles.button),
-  loading: PropTypes.bool,
   onPress: PropTypes.func
 }
 
