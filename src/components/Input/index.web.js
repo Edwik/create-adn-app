@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Dimensions, TextInput } from 'react-native'
 import { useId } from "react-id-generator";
 import Icon from '../Icons';
 import Txt from './../Txt'
-// import './style.css'
+import './style.css'
 
 let SCREEN_WIDTH = Dimensions.get('window').width
 let SCREEN_HEIGHT = Dimensions.get('window').height

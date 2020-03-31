@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import PropTypes from "prop-types";
 import { Text } from 'react-native'
-import { Strings } from '../../tools/lang'
+import { Strings } from './../../tools/Lang'
 import { ArrayString } from '../../tools/ArrayStrings'
 import Theme from './../../tools/Theme'
 import Identity from './../../utils/Identity'
