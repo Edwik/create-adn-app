@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-const isMobileDevice = () => {
+export const isMobileDevice = () => {
   let inAMobileDevice = false
   
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
@@ -13,5 +13,3 @@ const isMobileDevice = () => {
   }
   return inAMobileDevice
 }
-
-export default isMobileDevice

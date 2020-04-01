@@ -1,30 +1,21 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { Modalize } from 'react-native-modalize'
 import PropTypes from 'prop-types'
 
 import Txt from '../Txt'
 import Icon from '../Icons'
 import DividerComponent from '../Divider'
+import Modal from '../Modal'
 
 export default function NeedHelpModal (props) {
   const { open, onClose } = props
-  const modalRef = useRef(null)
-
-  useEffect(() => {
-    if (open) {
-      const modal = modalRef.current
-      if (modal) {
-        modal.open()
-      } 
-    }
-  }, [open])
 
   return (
-    <Modalize
+    <Modal
+      open={open}
       adjustToContentHeight
-      ref={modalRef}
-      onClosed={props.onClose}
+      onClose={onClose}
+      maxWidth={'xs'}
     >
       <View style={styles.content}>
         <Txt
@@ -69,7 +60,7 @@ export default function NeedHelpModal (props) {
           />
         </View>
       </View>
-    </Modalize>
+    </Modal>
   )
 }
 
