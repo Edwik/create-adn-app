@@ -34,6 +34,7 @@ const ForgotPassword = (props) => {
   }
   return (
     <ForgotPasswordTemplate
+      {...props}
       onForgotPassword={onForgotPassword}
       loading={loading}
       error={error}

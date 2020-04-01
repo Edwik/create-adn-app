@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Modalize } from 'react-native-modalize'
 import PropTypes from 'prop-types'
 
 import Txt from '../Txt'
 import Icon from '../Icons'
+import DividerComponent from '../Divider'
 
 export default function NeedHelpModal (props) {
-  const { open } = props
+  const { open, onClose } = props
+  const modalRef = useRef(null)
 
   useEffect(() => {
     if (open) {
       const modal = modalRef.current
       if (modal) {
         modal.open()
-      }
+      } 
     }
   }, [open])
 
@@ -22,21 +24,27 @@ export default function NeedHelpModal (props) {
     <Modalize
       adjustToContentHeight
       ref={modalRef}
+      onClosed={props.onClose}
     >
-      <View>
+      <View style={styles.content}>
         <Txt
+          style={styles.text}
           Key='needHelpModalTitle'
           text='Need Help?'
-          identity='h1'
-        />
-        <Txt
-          Key='needHelpModalSubtitle'
-          text='Please contact us at'
+          identity='subtitleBold'
           isCapitalize={false}
         />
-        <View>
+        <Txt
+          style={styles.text}
+          Key='needHelpModalSubtitle'
+          text='Please contact us at'
+          identity='subtitle'
+          isCapitalize={false}
+        />
+        <View style={styles.contactContainer}>
           <Icon
             name='Email'
+            width='20'
             height='20'
             style={styles.icons}
           />
@@ -46,9 +54,11 @@ export default function NeedHelpModal (props) {
             isCapitalize={false}
           />
         </View>
-        <View>
+        <DividerComponent containerStyle={styles.divider} />
+        <View style={styles.contactContainer}>
           <Icon
             name='Phone'
+            width='20'
             height='20'
             style={styles.icons}
           />
@@ -64,10 +74,24 @@ export default function NeedHelpModal (props) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  content: {
+    margin: 30
+  },
+  text: {
+    marginBottom: 10
+  },
+  contactContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginVertical: 10,
+    marginHorizontal: 0
+  },
   icons: {
-    width: 20,
-    height: 20
+    marginRight: 20
+  },
+  divider: {
+    marginVertical: 5
   }
 })
 
@@ -75,6 +99,6 @@ NeedHelpModal.propTypes = {
   open: PropTypes.bool
 }
 
-ButtonComponent.defaultProps = {
+NeedHelpModal.defaultProps = {
   open: false
 }

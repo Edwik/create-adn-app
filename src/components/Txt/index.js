@@ -22,7 +22,17 @@ export default function Txt(props) {
   }
 
   return (
-    <Text id={props.Key} style={Identity.Font[props.identity], {color: Theme[props.color],}, props.style }>
+    <Text
+      id={props.Key}
+      style={[
+        Identity.Font[props.identity],
+        {
+          color: Theme[props.color],
+          cursor:'none'
+        },
+        props.style
+      ]}
+    >
       {
         Strings === null ? props.isCapitalize ? toCapitalize(props.text)
         : props.text : Strings[props.Key]
@@ -37,7 +47,8 @@ Txt.propTypes = {
   isCapitalize: PropTypes.bool,       //if you wish capitalize the text.
   avoid: PropTypes.bool,              //permite repetirse esta Key, yes or no.
   identity: PropTypes.string,         //style of text
-  color: PropTypes.string             //color of text
+  color: PropTypes.string,            //color of text
+  onPress: PropTypes.func             // Function to execute when click the text
 };
 
 Txt.defaultProps = {
@@ -45,5 +56,6 @@ Txt.defaultProps = {
   isCapitalize: true,
   avoid: false,
   identity: 'body1',
-  color: 'PRIMARY_TEXT'
+  color: 'PRIMARY_TEXT',
+  onPress: () => {}
 }
