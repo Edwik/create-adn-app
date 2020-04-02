@@ -85,7 +85,7 @@ InputComponent.propTypes = {
   icon: PropTypes.string,
   style: ViewPropTypes.style,
   onChange: PropTypes.func,
-  type: 'email' || 'name' || 'phone' || 'number' || 'numberId' || 'alphanumeric'
+  type: PropTypes.string // email | name | phone | number | numberId | alphanumeric
 }
 
 InputComponent.defaultProps = {

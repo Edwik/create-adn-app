@@ -7,9 +7,9 @@ import AppNavigator from './src/navigation/AppNavigator'
 console.disableYellowBox = true;
 import { Provider } from 'react-redux'
 import store from './src/store'
-import { ElementsTheme, MaterialUITheme } from './src/tools/Theme';
+import { ElementsTheme, MaterialUITheme } from './src/tools/Theme'
 import { ThemeProvider as ElementsThemeProvider } from 'react-native-elements'
-import MaterialUIThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { ThemeProvider as MaterialUIThemeProvider } from '@material-ui/core/styles'
 
 export default function App() {
 
