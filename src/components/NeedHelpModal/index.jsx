@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, Linking, TouchableOpacity, Platform } from 'react-native'
 import PropTypes from 'prop-types'
 
 import Txt from '../Txt'
@@ -10,6 +10,17 @@ import Modal from '../Modal'
 export default function NeedHelpModal (props) {
   const { open, onClose } = props
 
+  const contactPhoneNumber = '3123194766'
+  const contactEmail = 'support@edgelogistics.com'
+
+  const callPhone = () => {
+    Linking.openURL(`tel:${contactPhoneNumber}`)
+  }
+
+  const sendEmail = () => {
+    Linking.openURL(`mailto:${contactEmail}`)
+  }
+
   return (
     <Modal
       open={open}
@@ -19,6 +30,7 @@ export default function NeedHelpModal (props) {
     >
       <View style={styles.content}>
         <Txt
+          avoid
           style={styles.text}
           Key='needHelpModalTitle'
           text='Need Help?'
@@ -26,13 +38,17 @@ export default function NeedHelpModal (props) {
           isCapitalize={false}
         />
         <Txt
+          avoid
           style={styles.text}
           Key='needHelpModalSubtitle'
           text='Please contact us at'
           identity='subtitle'
           isCapitalize={false}
         />
-        <View style={styles.contactContainer}>
+        <TouchableOpacity
+          onPress={sendEmail}
+          style={styles.contactContainer}
+        >
           <Icon
             name='Email'
             width='20'
@@ -40,13 +56,17 @@ export default function NeedHelpModal (props) {
             style={styles.icons}
           />
           <Txt
+            avoid
             Key='needHelpModalEmail'
-            text='support@edgelogistics.com'
+            text={contactEmail}
             isCapitalize={false}
           />
-        </View>
+        </TouchableOpacity>
         <DividerComponent containerStyle={styles.divider} />
-        <View style={styles.contactContainer}>
+        <TouchableOpacity
+          onPress={callPhone}
+          style={styles.contactContainer}
+        >
           <Icon
             name='Phone'
             width='20'
@@ -54,11 +74,12 @@ export default function NeedHelpModal (props) {
             style={styles.icons}
           />
           <Txt
+            avoid
             Key='needHelpModalPhone'
-            text='312-319-4766'
+            text={contactPhoneNumber}
             isCapitalize={false}
           />
-        </View>
+        </TouchableOpacity>
       </View>
     </Modal>
   )
