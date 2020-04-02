@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { useId } from 'react-id-generator'
 import Icon from '../Icons'
 import Theme from '../../tools/Theme'
+import Identity from '../../utils/Identity'
 import { Patterns } from '../../utils/Values/Patterns'
 
 let SCREEN_WIDTH = Dimensions.get('window').width
@@ -45,18 +46,19 @@ export default function InputComponent(props) {
       value={value}
       placeholder={placeholder}
       errorMessage={error}
-      errorStyle={styles.error}
+      errorStyle={[
+        styles.error,
+        { color: Theme.ERROR_COLOR }
+      ]}
       containerStyle={styles.container}
       inputStyle={[
         styles.input
       ]}
       inputContainerStyle={[
         styles.inputContainer,
-        {
-          borderColor: error
-          ? Theme.PRIMARY_COLOR
-          : Theme.SECONDARY_TEXT
-        }
+        error
+          ? Identity.Borders.Error
+          : Identity.Borders.Normal
       ]}
       leftIconContainerStyle= {styles.icon}
       leftIcon={
@@ -83,8 +85,6 @@ const styles = StyleSheet.create({
     height: 85
   },
   inputContainer: {
-    borderRadius: 5,
-    borderWidth: 1,
     width: '100%',
     height: 60
   },

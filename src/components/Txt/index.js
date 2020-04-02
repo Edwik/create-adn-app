@@ -27,8 +27,7 @@ export default function Txt(props) {
       style={[
         Identity.Font[props.identity],
         {
-          color: Theme[props.color],
-          cursor:'none'
+          color: Theme[props.color]
         },
         props.style
       ]}

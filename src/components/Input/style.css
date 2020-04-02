@@ -1,7 +1,3 @@
-.Input-component-container {
-  height: 80px;
-}
-
-.Input-component {
-  height: 60px;
+input {
+  outline: none;
 }
