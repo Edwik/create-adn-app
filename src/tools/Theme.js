@@ -1,3 +1,5 @@
+import { createMuiTheme } from '@material-ui/core/styles'
+
 import { Constants } from './Constants'
 import {LIGHT_THEME, DARK_THEME} from '../utils/Colors'
 
@@ -11,3 +13,14 @@ export const ElementsTheme = {
     divider: Theme.DIVIDER_COLOR
   }
 }
+
+export const MaterialUITheme = createMuiTheme({
+  palette: {
+    primary: {
+      main: Theme.PRIMARY_COLOR
+    },
+    secondary: {
+      main: Theme.ACCENT_COLOR
+    }
+  }
+})

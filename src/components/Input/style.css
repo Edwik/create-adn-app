@@ -1,3 +1,7 @@
-#id1{
-    outline: none;
+.Input-component-container {
+  height: 80px;
+}
+
+.Input-component {
+  height: 60px;
 }

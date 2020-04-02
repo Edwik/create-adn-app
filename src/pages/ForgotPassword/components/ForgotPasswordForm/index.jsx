@@ -54,6 +54,7 @@ export default function ForgotPasswordForm(props) {
           placeholder='Email'
           value={email}
           onChange={(name, newValue) => setEmail(newValue)}
+          type='email'
         />
       </View>
 
