@@ -7,7 +7,7 @@ import Theme from '../../tools/Theme'
 
 export default function ButtonComponent (props) {
   const {
-    buttonStyle,
+    style,
     title,
     onPress,
     type,
@@ -17,7 +17,7 @@ export default function ButtonComponent (props) {
   return (
     <Button
       buttonStyle={[
-        buttonStyle,
+        style,
         styles.button
       ]}
       titleStyle={styles.textStyle}
@@ -31,6 +31,7 @@ export default function ButtonComponent (props) {
 
 const styles = StyleSheet.create({
   button: {
+    paddingHorizontal: 20,
     borderWidth: 1,
     borderRadius: 5,
     width: '100%',

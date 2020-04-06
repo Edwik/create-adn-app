@@ -21,8 +21,8 @@ export default function ForgotPasswordTemplate (props) {
     props.history.push('/login')
   }
 
-  const handleOpenModal = () => {
-    setOpenModal(!openModal)
+  const handleOpenModal = (newValue) => {
+    setOpenModal(newValue)
   }
 
   const Header = () => {
@@ -34,7 +34,7 @@ export default function ForgotPasswordTemplate (props) {
             width='25'
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={handleOpenModal}>
+        <TouchableOpacity onPress={() => handleOpenModal(true)}>
           <Txt
             avoid
             text='Help'
@@ -66,7 +66,7 @@ export default function ForgotPasswordTemplate (props) {
       </SafeAreaView>
       <NeedHelpModal
         open={openModal}
-        onClose={handleOpenModal}
+        onClose={() => handleOpenModal(false)}
       />
     </React.Fragment>
   )

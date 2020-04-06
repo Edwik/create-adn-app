@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Route, Switch } from './AppRouterSources'
+import { Router, Route, Switch, Redirect } from './AppRouterSources'
 
 import BasicPageComponent from './../components/BasicPageComponent'
 import Pages from '../pages/exportPages'
@@ -16,6 +16,7 @@ function AppNavigator() {
             )
           })
         }
+        <Redirect from='/' to='forgot-password' />
         <Route component={BasicPageComponent} />
       </Switch>
     </Router>
