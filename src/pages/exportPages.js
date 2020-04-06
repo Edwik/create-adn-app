@@ -10,12 +10,14 @@ export default [
   },
   {
     name: 'Login',
-    path: 'login',
-    component: Login
+    path: '/login',
+    component: Login,
+    layout: '/auth'
   },
   {
     name: 'Forgot Password',
-    path: 'forgot-password',
-    component: ForgotPassword
+    path: '/forgot-password',
+    component: ForgotPassword,
+    layout: '/auth'
   }
 ]
