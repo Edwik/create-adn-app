@@ -11,8 +11,6 @@ const LayoutNavigator = (props) => {
     <Switch>
       {
         layoutPages.map((page, index) => {
-          console.log(layout)
-          console.log(`${layout !== '/main' ? layout : ''}${page.path}`)
           return (
             <Route
               exact

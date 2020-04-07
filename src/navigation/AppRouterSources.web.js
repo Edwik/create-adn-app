@@ -1,4 +1,10 @@
-import { BrowserRouter, Route as WebRoute, Link as WebLink, Redirect as WebRedirect, Switch as WebSwitch } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Route as WebRoute,
+  Link as WebLink,
+  Redirect as WebRedirect,
+  Switch as WebSwitch
+} from 'react-router-dom'
 
 export const Router = BrowserRouter
 export const Route = WebRoute
