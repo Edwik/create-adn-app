@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   safeAreaContainer: {
     flex: 1,
     width: '100%',
-    marginLeft: isMobileDevice() ? 0 : 150
+    paddingLeft: isMobileDevice() ? 0 : 75
   }
 })
 

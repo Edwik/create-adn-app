@@ -16,7 +16,8 @@ export default function QuickNumbers(props) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 20
+    marginHorizontal: 20,
+    marginVertical: 10
   }
 })
 

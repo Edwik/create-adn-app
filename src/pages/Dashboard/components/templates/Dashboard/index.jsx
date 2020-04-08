@@ -38,6 +38,8 @@ export default function DashboardTemplate(props) {
 
 const styles = StyleSheet.create({
   title: {
+    fontFamily: 'roboto-bold',
+    fontSize: 23,
 		margin: 20
   }
 })  

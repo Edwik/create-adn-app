@@ -14,9 +14,50 @@ const Dashboard = (props) => {
     responseHandler
   } = props
 
+  const lanes = [
+    {
+      "lane_id": "lnkwn71584664111682",
+      "carrier_id": "EDGEROIL",
+      "originState": "AL",
+      "originCity": "Abbeville",
+      "stopsCount": "",
+      "destState": "AL",
+      "destCity": "Auburn",
+      "maxWeight": "",
+      "distance": "",
+      "equipmentType": ""
+    },
+    {
+      "lane_id": "lnez9f1582052890754",
+      "carrier_id": "EDGEROIL",
+      "originState": "CA",
+      "originCity": "California",
+      "stopsCount": "",
+      "destState": "NY",
+      "destCity": "New York",
+      "maxWeight": "",
+      "distance": "",
+      "equipmentType": ""
+    },
+    {
+      "lane_id": "lnhqjf1582554145606",
+      "carrier_id": "EDGEROIL",
+      "originState": "CA",
+      "originCity": "Los Angeles",
+      "stopsCount": "",
+      "destState": "FL",
+      "destCity": "Miami",
+      "maxWeight": "",
+      "distance": "",
+      "equipmentType": ""
+    },
+  ]
+
   return (
     <View>
-      <DashboardTemplate />
+      <DashboardTemplate
+        lanes={lanes}
+      />
     </View>
   )
 }

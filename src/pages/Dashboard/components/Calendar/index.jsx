@@ -25,10 +25,11 @@ export default function Calendar (props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 20,
+    marginVertical: 10,
     marginLeft: 20
   },
   title: {
+    fontSize: 11,
     color: Theme.SECONDARY_DARK_3
   }
 })
