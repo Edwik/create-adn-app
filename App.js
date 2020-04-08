@@ -11,6 +11,9 @@ import { ElementsTheme, MaterialUITheme } from './src/tools/Theme'
 import { ThemeProvider as ElementsThemeProvider } from 'react-native-elements'
 import { ThemeProvider as MaterialUIThemeProvider } from '@material-ui/core/styles'
 
+import ToastComponent from './src/components/Toast'
+import ErrorModal from './src/components/ErrorModal';
+
 export default function App() {
 
   const [loading, setLoading] = useState(true)
@@ -49,6 +52,8 @@ export default function App() {
               />
             ): <AppNavigator/> }
           </View>
+          <ToastComponent />
+          <ErrorModal />
         </ElementsThemeProvider>
       </MaterialUIThemeProvider>
     </Provider>

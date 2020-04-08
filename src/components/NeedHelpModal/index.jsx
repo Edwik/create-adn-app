@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import Txt from '../Txt'
 import Icon from '../Icons'
 import DividerComponent from '../Divider'
-import Modal from '../Modal'
+import Modalize from '../Modalize'
+import { isMobileDevice } from '../../tools/platform'
 
 export default function NeedHelpModal (props) {
   const { open, onClose } = props
@@ -21,22 +22,31 @@ export default function NeedHelpModal (props) {
     Linking.openURL(`mailto:${contactEmail}`)
   }
 
+  const Title = () => {
+    return isMobileDevice()
+      ? <Txt
+        avoid
+        style={styles.text}
+        Key='needHelpModalTitle'
+        text='Need Help?'
+        identity='subtitleBold'
+        isCapitalize={false}
+      />
+      : null
+  }
+
   return (
-    <Modal
+    <Modalize
       open={open}
       adjustToContentHeight
       onClose={onClose}
-      maxWidth={'xs'}
+      title='Need Help?'
+      action='Close'
+      onAction={onClose}
+      modalize
     >
       <View style={styles.content}>
-        <Txt
-          avoid
-          style={styles.text}
-          Key='needHelpModalTitle'
-          text='Need Help?'
-          identity='subtitleBold'
-          isCapitalize={false}
-        />
+        <Title />
         <Txt
           avoid
           style={styles.text}
@@ -81,13 +91,12 @@ export default function NeedHelpModal (props) {
           />
         </TouchableOpacity>
       </View>
-    </Modal>
+    </Modalize>
   )
 }
 
 const styles = StyleSheet.create({
   content: {
-    margin: 30
   },
   text: {
     marginBottom: 10

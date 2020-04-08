@@ -4,5 +4,9 @@ export default {
   failFetchUsers: 'FAIL_FETCH_USERS',
   sendForgotPasswordEmail: 'SEND_FORGOT_PASSWORD_EMAIL',
   successSendForgotPasswordEmail: 'SUCCESS_SEND_FORGOT_PASSWORD_EMAIL',
-  failSendForgotPasswordEmail: 'FAIL_SEND_FORGOT_PASSWORD_EMAIL'
+  failSendForgotPasswordEmail: 'FAIL_SEND_FORGOT_PASSWORD_EMAIL',
+  sendToast: 'SEND_TOAST',
+  clearToastData: 'CLEAR_TOAST_DATA',
+  sendGeneralError: 'SEND_GENERAL_ERROR',
+  clearGeneralErrorData: 'CLEAR_GENERAL_ERROR_DATA',
 }

@@ -1,7 +1,11 @@
 import userReducers from './Example/reducers/user.reducers'
 import forgotPasswordReducers from './ForgotPassword/reducers/forgotPassword.reducers'
+import toastReducers from './../components/Toast/reducers/toast.reducers'
+import errorReducers from './../components/ErrorModal/reducers/error.reducers'
 
 export default {
   userReducers,
-  forgotPasswordReducers
+  forgotPasswordReducers,
+  toastReducers,
+  errorReducers
 }
