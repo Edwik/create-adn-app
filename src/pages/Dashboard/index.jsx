@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 
 import withRequestHandler from '../../hoc/withRequestHandler'
-import Txt from '../../components/Txt'
+import DashboardTemplate from './components/templates/Dashboard'
 
 const Dashboard = (props) => {
   const { 
@@ -16,11 +16,7 @@ const Dashboard = (props) => {
 
   return (
     <View>
-      <Txt
-        avoid
-        text='Dashboard'
-        identity='h1'
-      />
+      <DashboardTemplate />
     </View>
   )
 }

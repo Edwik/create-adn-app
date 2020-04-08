@@ -1,8 +1,9 @@
 import React from 'react'
 import LayoutNavigator from '../LayoutNavigator'
 import Navbar from '../../../components/Navbar'
-import Txt from '../../../components/Txt'
+
 import { SafeAreaView, StyleSheet } from 'react-native'
+import { isMobileDevice } from '../../../tools/platform'
 
 const MainLayout = (props) => {
   return (
@@ -20,7 +21,9 @@ const MainLayout = (props) => {
 
 const styles = StyleSheet.create({
   safeAreaContainer: {
-    flex: 1
+    flex: 1,
+    width: '100%',
+    marginLeft: isMobileDevice() ? 0 : 150
   }
 })
 
