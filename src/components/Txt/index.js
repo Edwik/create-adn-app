@@ -31,6 +31,7 @@ export default function Txt(props) {
         },
         props.style
       ]}
+      numberOfLines={props.numberOfLines}
     >
       {
         Strings === null ? props.isCapitalize ? toCapitalize(props.text)
