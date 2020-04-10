@@ -1,26 +1,20 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { LIGHT_THEME, DARK_THEME } from '../utils/Colors'
+import { SetTheme } from './../providers/EvergreenThemeProvider/actions'
+import store from './../store'
 
-import { Constants } from './Constants'
-import {LIGHT_THEME, DARK_THEME} from '../utils/Colors'
-
-const Theme = Constants.THEME === 'LightMode' ? LIGHT_THEME : DARK_THEME
-export default Theme
-
-export const ElementsTheme = {
-  colors: {
-    primary: Theme.PRIMARY_COLOR,
-    secondary: Theme.ACCENT_COLOR,
-    divider: Theme.DIVIDER_COLOR
-  }
-}
-
-export const MaterialUITheme = createMuiTheme({
-  palette: {
-    primary: {
-      main: Theme.PRIMARY_COLOR
-    },
-    secondary: {
-      main: Theme.ACCENT_COLOR
+const Theme = (theme) => {
+  const getTheme = () => {
+    // Get them from theme from store
+    if (theme) {
+      return theme
+    } else {
+      // Set default them if value if null
+      store.dispatch(SetTheme('light'))
+      return 'light'
     }
   }
-})
+
+  return getTheme() === 'light' ? LIGHT_THEME : DARK_THEME
+}
+
+export default Theme

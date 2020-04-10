@@ -9,4 +9,5 @@ export default {
   clearToastData: 'CLEAR_TOAST_DATA',
   sendGeneralError: 'SEND_GENERAL_ERROR',
   clearGeneralErrorData: 'CLEAR_GENERAL_ERROR_DATA',
+  setTheme: 'SET_THEME'
 }

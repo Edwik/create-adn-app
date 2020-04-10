@@ -1,19 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { View, Text, ScrollView, Dimensions, Button } from 'react-native'
 
 import Image from './../../../../components/Image'
 import InputComponent from './../../../../components/Input'
 
-let SCREEN_WIDTH = Dimensions.get('window').width
-let SCREEN_HEIGHT = Dimensions.get('window').height
-let WIDTH = SCREEN_WIDTH*0.9
+const SCREEN_WIDTH = Dimensions.get('window').width
+const SCREEN_HEIGHT = Dimensions.get('window').height
+const WIDTH = SCREEN_WIDTH * 0.9
 
-export default function LoginTemplate(props) {
+export default function LoginTemplate () {
 
-  const FormComponent = (props) => {
-    return(
+  const FormComponent = () => {
+    return (
       <View style={{ width: WIDTH, maxWidth: 400, alignItems: 'center', paddingVertical: 20, paddingHorizontal: 20 }}>
-        
+
         <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center', height: 60, marginBottom: 58 }}>
           <Image name={'logo'}/>
         </View>
@@ -40,9 +41,13 @@ export default function LoginTemplate(props) {
 
   return (
     <ScrollView>
-      <View style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT, justifyContent: 'center', alignItems: 'center'}}>
-        <FormComponent/>
+      <View style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT, justifyContent: 'center', alignItems: 'center' }}>
+        <FormComponent />
       </View>
     </ScrollView>
-  );
+  )
+}
+
+LoginTemplate.propTypes = {
+  theme: PropTypes.string
 }
