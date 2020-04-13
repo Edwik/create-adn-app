@@ -2,12 +2,17 @@ import React from 'react'
 import LayoutNavigator from '../LayoutNavigator'
 import Navbar from '../../../components/Navbar'
 
-import { SafeAreaView, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
 import { isMobileDevice } from '../../../tools/platform'
 
 const MainLayout = (props) => {
+  const LayoutContainer = (props) => {
+    return Platform.OS === 'web'
+      ? <React.Fragment {...props} />
+      : <KeyboardAvoidingView {...props} />
+  }
   return (
-    <React.Fragment>
+    <LayoutContainer>
       <SafeAreaView style={styles.safeAreaContainer}>
         <LayoutNavigator
           layout='/main'
@@ -15,7 +20,7 @@ const MainLayout = (props) => {
         />
       </SafeAreaView>
       <Navbar {...props} />
-    </React.Fragment>
+    </LayoutContainer>
   )
 }
 
