@@ -41,8 +41,7 @@ export default function PreferredLanes (props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
-    marginBottom: 10
+    marginHorizontal: 20
   },
   title: {
     marginBottom: 10,

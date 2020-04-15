@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { SafeAreaView, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
+
+import { isMobileDevice } from '../../../tools/platform'
 import LayoutNavigator from '../LayoutNavigator'
 import Navbar from '../../../components/Navbar'
-
-import { SafeAreaView, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
-import { isMobileDevice } from '../../../tools/platform'
+import Topbar from '../../../components/Topbar'
+import Pages from '../../../pages/exportPages'
 
 const MainLayout = (props) => {
   const LayoutContainer = (props) => {
@@ -11,9 +13,17 @@ const MainLayout = (props) => {
       ? <React.Fragment {...props} />
       : <KeyboardAvoidingView {...props} />
   }
+  const [ currentPage, setCurrentPage ] = useState({})
+  useEffect(() => {
+    if (props.location.pathname !== '/') {
+      setCurrentPage(Pages.find(page => page.path === props.location.pathname))
+    }
+  }, [props.location.pathname])
+
   return (
     <React.Fragment>
       <SafeAreaView style={styles.safeAreaContainer}>
+        <Topbar title={currentPage.name} />
         <LayoutNavigator
           layout='/main'
           defaultPath='/dashboard'

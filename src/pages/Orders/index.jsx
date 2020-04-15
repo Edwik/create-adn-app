@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 
 import withRequestHandler from '../../hoc/withRequestHandler'
-import Txt from '../../components/Txt'
 
 const Orders = (props) => {
   const { 
@@ -15,13 +14,7 @@ const Orders = (props) => {
   } = props
 
   return (
-    <View>
-      <Txt
-        avoid
-        text='Orders'
-        identity='h1'
-      />
-    </View>
+    <View></View>
   )
 }
 

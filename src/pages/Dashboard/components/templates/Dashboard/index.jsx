@@ -18,13 +18,6 @@ export default function DashboardTemplate(props) {
   return (
     <View style={styles.container}>
       <View style={styles.lanesAndNumbersContainer}>
-        <Txt
-          avoid
-          text='Dashboard'
-          identity='h3'
-          style={styles.title}
-          isCapitalize={false}
-        />
         <PreferredLanes
           lanes={lanes}
         />
@@ -50,9 +43,6 @@ const styles = StyleSheet.create({
   },
   eventsContainer: {
     flex: isSmallDevice() ? 0 : 2
-  },
-  title: {
-		margin: 20
   }
 })  
 

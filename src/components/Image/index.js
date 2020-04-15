@@ -1,23 +1,59 @@
 import React from 'react'
-import PropTypes from "prop-types";
-import { View, Image } from 'react-native'
+import PropTypes from 'prop-types'
+import { View, Image, StyleSheet, ViewPropTypes } from 'react-native'
 
 import Assets from './../../../assets/export'
 
 export default function BasicPageComponent(props) {
+  const {
+    name,
+    containerStyle,
+    style,
+    width,
+    height
+  } = props
 
   return(
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
-        <Image resizeMode='contain' source={Assets[props.name]} style={{...props.style, width: '100%', height: '100%' }} />
+    <View 
+      style={[
+        containerStyle,
+        styles.container,
+        {
+          width,
+          height
+        }
+      ]}
+    >
+      <Image
+        resizeMode='contain'
+        source={Assets[name]}
+        style={[
+          style,
+          {
+            width,
+            height
+          }
+        ]}
+      />
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
+
 BasicPageComponent.propTypes = {
-  name:     PropTypes.string,
-  style:    PropTypes.string
-};
+  name:	PropTypes.string,
+  containerStyle: ViewPropTypes.style,
+  style: ViewPropTypes.style
+}
 
 BasicPageComponent.defaultProps = {
-    name:     'noImage'
-};
+  name: 'noImage',
+	containerStyle: null,
+	style: null
+}
