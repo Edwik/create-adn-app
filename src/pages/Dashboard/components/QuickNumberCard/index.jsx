@@ -1,24 +1,21 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ViewPropTypes } from 'react-native'
 import { Card } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
 import Txt from '../../../../components/Txt'
-import Identity from '../../../../utils/Identity'
 import Theme from '../../../../tools/Theme'
 
 export default function QuickNumberCard (props) {
   const {
     title,
     number,
-    color
+    color,
+    style
   } = props
 
   return (
-    <View style={[
-      styles.container,
-      Identity.Shadow.Main
-    ]}>
+    <View style={style}>
       <Card
         containerStyle={[
           styles.card,
@@ -49,13 +46,12 @@ export default function QuickNumberCard (props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: 75
-  },
   card: {
     borderRadius: 4,
+    borderWidth: 0,
     margin: 0,
     padding: 9,
+    alignItems: 'center',
     width: '100%'
   },
   text: {
@@ -67,10 +63,12 @@ QuickNumberCard.propTypes = {
   title: PropTypes.string.isRequired,
   number: PropTypes.number.isRequired,
   color: PropTypes.string.isRequired,
+  style: ViewPropTypes.style
 }
 
 QuickNumberCard.defaultProps = {
   title: '',
   number: 0,
-  color: ''
+  color: '',
+  style: null
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -6,7 +6,7 @@ import Txt from '../../../../../components/Txt'
 import PreferredLanes from '../../PreferredLanes'
 import QuickNumbers from '../../QuickNumbers'
 import Calendar from '../../Calendar'
-import SelectInput from '../../../../../components/SelectInput'
+import { isSmallDevice } from '../../../../../tools/platform'
 
 export default function DashboardTemplate(props) {
   const {
@@ -16,28 +16,41 @@ export default function DashboardTemplate(props) {
   } = props
 
   return (
-    <View>
-      <Txt
-        avoid
-        text='Dashboard'
-        identity='h3'
-        style={styles.title}
-        isCapitalize={false}
-      />
-      <PreferredLanes
-        lanes={lanes}
-      />
-      <QuickNumbers
-        quickNumbers={quickNumbers}
-      />
-      <Calendar
-        events={events}
-      />
+    <View style={styles.container}>
+      <View style={styles.lanesAndNumbersContainer}>
+        <Txt
+          avoid
+          text='Dashboard'
+          identity='h3'
+          style={styles.title}
+          isCapitalize={false}
+        />
+        <PreferredLanes
+          lanes={lanes}
+        />
+        <QuickNumbers
+          quickNumbers={quickNumbers}
+        />
+      </View>
+      <View style={styles.eventsContainer}>
+        <Calendar
+          events={events}
+        />
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: isSmallDevice() ? 'column' : 'row'
+  },
+  lanesAndNumbersContainer: {
+    flex: isSmallDevice() ? 0 : 3
+  },
+  eventsContainer: {
+    flex: isSmallDevice() ? 0 : 2
+  },
   title: {
 		margin: 20
   }
