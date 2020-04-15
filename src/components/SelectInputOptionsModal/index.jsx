@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Modal, SafeAreaView, FlatList, TouchableOpacity } from 'react-native'
-import { Card, Badge } from 'react-native-elements'
+import {
+  View,
+  StyleSheet,
+  Modal,
+  SafeAreaView,
+  FlatList,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native'
+import { Card, Badge, Input } from 'react-native-elements'
 import PropTypes from 'prop-types'
 
-import InputComponent from '../Input'
 import Txt from '../Txt'
 import Icon from '../Icons'
-import ButtonComponent from '../Button'
 import CheckBox from '../CheckBox'
 import Theme from '../../tools/Theme'
 import Spinner from '../Spinner'
@@ -25,16 +31,16 @@ export default function SelectInputOptionsModal(props) {
     filterAsync
   } = props
   const [inputValue, setInputValue] = useState('')
-  const [newSelected, setNewSelected] = useState(selected)
+  const [selectedOptions, setSelectedOptions] = useState(selected)
   const [filteredOptions, setFilteredOptions] = useState(options)
 
   useEffect(() => {
     if (open) {
       setFilteredOptions(options)
       if (multiselect) {
-        setNewSelected(selected.length ? selected : [])
+        setSelectedOptions(selected.length ? selected : [])
       } else {
-        setNewSelected(selected)
+        setSelectedOptions(selected)
         setInputValue(selected[nameProp])
         filterOptions(selected[nameProp])
       }
@@ -48,12 +54,12 @@ export default function SelectInputOptionsModal(props) {
 
   const onSelectOption = (option) => {
     if (multiselect) {
-      const alreadyChecked = newSelected.indexOf(option.item) !== -1
+      const alreadyChecked = isOptionSelected(option.item)
       if (alreadyChecked) {
         deselectOption(option.item)
       } else {
-        setNewSelected([
-          ...newSelected,
+        setSelectedOptions([
+          ...selectedOptions,
           option.item
         ])
       }
@@ -63,7 +69,7 @@ export default function SelectInputOptionsModal(props) {
   }
 
   const onCloseModal = (item) => {
-    onClose(item || newSelected)
+    onClose(item || selectedOptions)
   }
 
   const filterOptions = (value) => {
@@ -76,16 +82,19 @@ export default function SelectInputOptionsModal(props) {
         )
       )
     }
-    
   }
   
   const deselectOption = (option) => {
-    setNewSelected(newSelected.filter(item => item[keyProp] !== option[keyProp])) 
+    setSelectedOptions(selectedOptions.filter(item => item[keyProp] !== option[keyProp])) 
   }
+
+  const isOptionSelected = (option) => Boolean(
+    selectedOptions.filter(item => item[keyProp] === option[keyProp]).length
+  )
 
   const RenderOption = (option) => {
     const currentOption = option.item
-    const optionChecked = newSelected.indexOf(option.item) !== -1
+    const optionChecked = isOptionSelected(option.item)
     return (
       <TouchableOpacity onPress={() => onSelectOption(option)}>
         <View style={styles.option}>
@@ -93,11 +102,10 @@ export default function SelectInputOptionsModal(props) {
             avoid
             text={currentOption[nameProp]}
           />
-          {multiselect ? <TouchableOpacity onPress={() => onSelectOption(option)}>
-            <CheckBox
-              checked={optionChecked}
-            />
-          </TouchableOpacity> : null}
+          {multiselect ? <CheckBox
+            onPress={() => onSelectOption(option)}
+            checked={optionChecked}
+          /> : null}
         </View>
       </TouchableOpacity>
     )
@@ -105,7 +113,7 @@ export default function SelectInputOptionsModal(props) {
 
   const MultiselectedOptions = () => (
     <View style={styles.multiselectedContainer}>
-      {newSelected.map((option, key) => (
+      {selectedOptions.map((option, key) => (
         <Badge
           key={key}
           badgeStyle={styles.multiselectedBadget}
@@ -138,18 +146,31 @@ export default function SelectInputOptionsModal(props) {
       style={styles.modal}
     >
       <SafeAreaView style={styles.container}>
-        <View>
-          <InputComponent
-            name='optionsInput'
-            value={inputValue}
-            onChange={onInputChange}
-            placeholder={placeholder}
-            icon='LeftArrow'
-            onPressIcon={() => onCloseModal()}
-            CustomInputHead={multiselect
-              ? MultiselectedOptions
+        <View horizontal style={styles.inputContainer}>
+          <TouchableOpacity onPress={() => onCloseModal()}>
+            <Icon
+              name='LeftArrow'
+              height='20'
+              width='20'
+              style={styles.inputIcon}
+            />
+          </TouchableOpacity>
+          <ScrollView
+            horizontal
+            contentContainerStyle={styles.inputScrollViewContainer}
+            showsHorizontalScrollIndicator={false}
+          >
+            {multiselect
+              ? <MultiselectedOptions />
               : null}
+            <Input
+              value={inputValue}
+              placeholder={placeholder}
+              inputContainerStyle={styles.elementsInputContainer}
+              inputStyle={styles.elementsInput}
+              onChangeText={text => onInputChange('', text)}
           />
+          </ScrollView>
         </View>
         <View>
           <Card containerStyle={styles.optionsContainer}>
@@ -180,7 +201,32 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    margin: 10
+    margin: 10,
+    marginBottom: 50
+  },
+  inputContainer: {
+    height: 60,
+    paddingLeft: 20,
+    marginVertical: 20,
+    borderWidth: 1,
+    borderColor: Theme.NORMAL_COLOR,
+    borderRadius: 3,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  inputScrollViewContainer: {
+    flexDirection: 'row',
+    overflow: 'scroll',
+    alignItems: 'center'
+  },
+  inputIcon: {
+    marginRight: 10
+  },
+  elementsInputContainer: {
+    borderBottomWidth: 0
+  },
+  elementsInput: {
+    minWidth: 40
   },
   optionsContainer: {
     margin: 0,

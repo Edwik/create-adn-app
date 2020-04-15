@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
     padding: 24
   },
   title: {
-    fontSize: 50,
     fontFamily: 'roboto-bold',
     marginBottom: 7
   },

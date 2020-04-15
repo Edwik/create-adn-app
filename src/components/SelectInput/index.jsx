@@ -42,6 +42,7 @@ export default function SelectInput(props) {
         icon={icon}
         placeholder={placeholder}
         onFocus={() => setOpenSelectModal(true)}
+        readonly
       />
       <SelectInputOptionsModal
         selected={selected}

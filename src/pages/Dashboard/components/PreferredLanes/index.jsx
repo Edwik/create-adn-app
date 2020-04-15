@@ -17,9 +17,10 @@ export default function PreferredLanes (props) {
       <Txt
         Key='dashboardPrederredLanesTitle'
         text='Preferred Lanes'
-        identity='subtitle'
+        identity='body2'
         isCapitalize={false}
         style={styles.title}
+        color='SECONDARY_DARK_3'
       />
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {lanes.map((lane, key) =>
@@ -44,9 +45,8 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   title: {
-    fontSize: 11,
     marginBottom: 10,
-    color: Theme.SECONDARY_DARK_3
+    fontWeight: 'normal'
   },
   addButtonContainet: {
     marginLeft: 20,

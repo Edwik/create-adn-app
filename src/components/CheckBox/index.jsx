@@ -7,7 +7,7 @@ import Theme from '../../tools/Theme'
 import { StyleSheet } from 'react-native'
 
 export default function CheckBox(props) {
-  const { checked, size } = props
+  const { checked, size, onPress } = props
   return (
     <NativeCheckBox
       containerStyle={styles.container}
@@ -21,6 +21,7 @@ export default function CheckBox(props) {
       }
       uncheckedIcon={<React.Fragment/>}
       checked={checked}
+      onPress={onPress}
     />
   )
 }
@@ -30,18 +31,20 @@ const styles = StyleSheet.create({
     height: 20,
     width: 20,
     borderWidth: 1,
-    borderRadius: 50,
+    borderRadius: 3,
     alignItems: 'center'
   }
 })
 
 CheckBox.propTypes = {
   checked: PropTypes.bool,
-  size: PropTypes.number
+  size: PropTypes.number,
+  onPress: PropTypes.func
 }
 
 CheckBox.defaultProps = {
   checked: false,
-  size: 10
+  size: 10,
+  onPress: () => {}
 }
 

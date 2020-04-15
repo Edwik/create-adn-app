@@ -12,7 +12,7 @@ const MainLayout = (props) => {
       : <KeyboardAvoidingView {...props} />
   }
   return (
-    <LayoutContainer>
+    <React.Fragment>
       <SafeAreaView style={styles.safeAreaContainer}>
         <LayoutNavigator
           layout='/main'
@@ -20,7 +20,7 @@ const MainLayout = (props) => {
         />
       </SafeAreaView>
       <Navbar {...props} />
-    </LayoutContainer>
+    </React.Fragment>
   )
 }
 

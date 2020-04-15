@@ -23,7 +23,8 @@ export default function InputComponent(props) {
     type,
     onFocus,
     onPressIcon,
-    CustomInputHead
+    readonly
+    
   } = props
 
   const [error, setError] = useState('')
@@ -49,20 +50,9 @@ export default function InputComponent(props) {
       : <View>{props.children}</View>
   }
 
-  const CustomInput = (props) => (
-    <ScrollView
-      horizontal
-      contentContainerStyle={styles.customInputContainer}
-      showsHorizontalScrollIndicator={false}
-    >
-      <CustomInputHead />
-      <TextInput
-        {...props}
-      />
-    </ScrollView>
-  )
-
   return (
+    <TouchableOpacity onPress={onPressIcon}>
+      <View>
     <Input
       id={id}
       value={value}
@@ -97,10 +87,12 @@ export default function InputComponent(props) {
           </IconContainer>
           : null
       }
-      inputComponent={CustomInputHead ? CustomInput : TextInput}
       onChangeText={text => onChange(name, text)}
       onFocus={onFocus}
+      editable={!readonly}
     />
+    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -116,11 +108,6 @@ const styles = StyleSheet.create({
   inputContainer: {
     width: '100%',
     height: 60
-  },
-  customInputContainer: {
-    flexDirection: 'row',
-    overflow: 'scroll',
-    alignItems: 'center'
   },
   input: {
     fontSize: 16,
@@ -142,7 +129,7 @@ InputComponent.propTypes = {
   onFocus: PropTypes.func,
   onPressIcon: PropTypes.func,
   type: PropTypes.string, // email | name | phone | number | numberId | alphanumeric
-  CustomInputHead: PropTypes.any
+  readonly: PropTypes.bool
 }
 
 InputComponent.defaultProps = {
@@ -155,5 +142,5 @@ InputComponent.defaultProps = {
   onFocus: () => {},
   onPressIcon: null,
   type: null,
-  CustomInputHead: null
+  readonly: false
 }
