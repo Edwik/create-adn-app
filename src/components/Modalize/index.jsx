@@ -1,7 +1,8 @@
 import React, { useRef, useEffect } from 'react'
 import { Modalize } from 'react-native-modalize'
+import { StyleSheet, View } from 'react-native'
 
-export default function ModalMobile (props) {
+export default function ModalizeMobile (props) {
   const { open, children, onClose } = props
   const modalRef = useRef(null)
 
@@ -20,7 +21,15 @@ export default function ModalMobile (props) {
       ref={modalRef}
       onClosed={onClose}
     >
-      {children}
+      <View style={styles.container}>
+        {children}
+      </View>
     </Modalize>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 30
+  }
+})

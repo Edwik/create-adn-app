@@ -9,7 +9,6 @@ class ForgotPasswordServices {
   async forgotPassword (payload) {
     return Fetch('post', routes.FORGOT_PASSWORD, payload)
       .then(res => {
-        console.log(res)
         return resValidator(res)
       })
       .catch(err => {
