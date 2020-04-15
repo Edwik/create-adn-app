@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import withRequestHandler from '../../hoc/withRequestHandler'
 import DashboardTemplate from './components/templates/Dashboard'
+import { FetchQuickNumbers } from './actions/dashboard.actions'
 
 const Dashboard = (props) => {
   const { 
@@ -63,12 +64,16 @@ const Dashboard = (props) => {
 }
 
 const mapStateToProps = (state, props) => {
-  return {}
+  return {
+    QUICK_NUMBERS: state.dashboardReducers.quickNumbers
+  }
 }
 
 export default withRequestHandler (
   connect(
     mapStateToProps,
-    {}
+    {
+      FetchQuickNumbers
+    }
   )(Dashboard)
 )

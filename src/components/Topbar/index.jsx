@@ -18,6 +18,7 @@ export default function Topbar(props) {
       />
       <Image
         name='defaultAvatar'
+        containerStyle={styles.avatarContainer}
         style={styles.avatar}
         width={40}
         height={40}
@@ -33,9 +34,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 10
   },
-  avatar: {
-    borderRadius: 50,
+  avatarContainer: {
     resizeMode: 'cover'
+  },
+  avatar: {
   }
 })
 

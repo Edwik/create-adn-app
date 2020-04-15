@@ -9,4 +9,9 @@ export default {
   clearToastData: 'CLEAR_TOAST_DATA',
   sendGeneralError: 'SEND_GENERAL_ERROR',
   clearGeneralErrorData: 'CLEAR_GENERAL_ERROR_DATA',
+  
+  fetchQuickNumbers: 'FETCH_QUICK_NUMBERS',
+  successFetchQuickNumbers: 'SUCCESS_FETCH_QUICK_NUMBERS',
+  failFetchQuickNumbers: 'FAIL_FETCH_QUICK_NUMBERS',
+  clearQuickNumbersData: 'CLEAR_QUICK_NUMBERS_DATA'
 }
