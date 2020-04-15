@@ -1,11 +1,17 @@
 import Example from './Example'
+import Splash from './Splash'
 import Login from './Login'
 import ForgotPassword from './ForgotPassword'
 
 export default [
   {
+    name: 'Splash',
+    path: '',
+    component: Splash
+  },
+  {
     name: 'Example',
-    path: 'example',
+    path: 'loads/my-available-load',
     component: Example
   },
   {

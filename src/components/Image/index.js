@@ -4,20 +4,22 @@ import { View, Image } from 'react-native'
 
 import Assets from './../../../assets/export'
 
-export default function BasicPageComponent(props) {
+export default function ImageComponent(props) {
 
   return(
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
-        <Image resizeMode='contain' source={Assets[props.name]} style={{...props.style, width: '100%', height: '100%' }} />
+        <Image resizeMode={props.mode} source={Assets[props.name]} style={{...props.style, width: '100%', height: '100%' }} />
     </View>
   )
 }
 
-BasicPageComponent.propTypes = {
+ImageComponent.propTypes = {
   name:     PropTypes.string,
-  style:    PropTypes.string
+  style:    PropTypes.string,
+  mode:     PropTypes.string
 };
 
-BasicPageComponent.defaultProps = {
-    name:     'noImage'
+ImageComponent.defaultProps = {
+    name:     'noImage',
+    mode:     'contain'
 };

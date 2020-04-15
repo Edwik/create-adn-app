@@ -54,3 +54,11 @@ export default function App() {
     </Provider>
   );
 }
+
+/**
+ * "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+ */
