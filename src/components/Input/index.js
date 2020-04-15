@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Dimensions, ViewPropTypes } from 'react-native'
+import { StyleSheet, Dimensions, ViewPropTypes, TouchableOpacity, View, TextInput, ScrollView } from 'react-native'
 import { Input } from 'react-native-elements'
 import PropTypes from 'prop-types'
 import { useId } from 'react-id-generator'
@@ -20,7 +20,11 @@ export default function InputComponent(props) {
     onChange,
     icon,
     placeholder,
-    type
+    type,
+    onFocus,
+    onPressIcon,
+    readonly
+    
   } = props
 
   const [error, setError] = useState('')
@@ -40,7 +44,15 @@ export default function InputComponent(props) {
     return false
   }
 
+  const IconContainer = (props) => {
+    return onPressIcon
+      ? <TouchableOpacity onPress={onPressIcon}>{props.children}</TouchableOpacity>
+      : <View>{props.children}</View>
+  }
+
   return (
+    <TouchableOpacity onPress={onPressIcon}>
+      <View>
     <Input
       id={id}
       value={value}
@@ -52,7 +64,10 @@ export default function InputComponent(props) {
       ]}
       containerStyle={styles.container}
       inputStyle={[
-        styles.input
+        styles.input,
+        {
+          marginLeft: icon ? 0 : 20
+        }
       ]}
       inputContainerStyle={[
         styles.inputContainer,
@@ -63,22 +78,28 @@ export default function InputComponent(props) {
       leftIconContainerStyle= {styles.icon}
       leftIcon={
         icon
-          ? <Icon
-            name={icon}
-            height='20'
-            width='20'
-          />
+          ? <IconContainer>
+            <Icon
+              name={icon}
+              height='20'
+              width='20'
+            />
+          </IconContainer>
           : null
       }
       onChangeText={text => onChange(name, text)}
+      onFocus={onFocus}
+      editable={!readonly}
     />
+    </View>
+    </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
   icon: {
     marginRight: 20,
-    marginLeft: 20
+    marginLeft: 20,
   },
   container: {
     paddingHorizontal: 0,
@@ -89,7 +110,9 @@ const styles = StyleSheet.create({
     height: 60
   },
   input: {
-    fontSize: 16
+    fontSize: 16,
+    paddingRight: 20
+
   },
   error: {
     marginLeft: 10
@@ -103,7 +126,10 @@ InputComponent.propTypes = {
   icon: PropTypes.string,
   style: ViewPropTypes.style,
   onChange: PropTypes.func,
-  type: PropTypes.string // email | name | phone | number | numberId | alphanumeric
+  onFocus: PropTypes.func,
+  onPressIcon: PropTypes.func,
+  type: PropTypes.string, // email | name | phone | number | numberId | alphanumeric
+  readonly: PropTypes.bool
 }
 
 InputComponent.defaultProps = {
@@ -113,5 +139,8 @@ InputComponent.defaultProps = {
   icon: '',
   style: null,
   onChange: () => {},
-  type: null
+  onFocus: () => {},
+  onPressIcon: null,
+  type: null,
+  readonly: false
 }

@@ -1,0 +1,8 @@
+.react-select__control:hover {
+  border-color: #000!important;
+}
+
+.react-select__option:hover,
+.react-select__option--is-focused {
+  background-color: #EAEDF4!important;
+}

@@ -11,7 +11,7 @@ const Font = {
   },
   h3: {
     fontFamily: 'poppins-bold',
-    fontSize: 22,
+    fontSize: 23,
     lineHeight: 48
   },
   h4: {
@@ -40,7 +40,7 @@ const Font = {
     lineHeight: 30
   },
   body2: {
-    fontFamily: 'roboto-medium',
+    fontFamily: 'roboto-regular',
     fontSize: 14,
     lineHeight: 20
   },

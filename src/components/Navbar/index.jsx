@@ -73,13 +73,14 @@ const styles = StyleSheet.create({
     bottom: isMobileDevice() ? 0 : '',
     height: isMobileDevice() ? 'auto' : '100%',
     width: isMobileDevice() ? '100%' : 75,
-    backgroundColor: isMobileDevice() ? Theme.GRAY : Theme.ACTIVE_COLOR
+    backgroundColor: isMobileDevice() ? Theme.GRAY : Theme.ACTIVE_COLOR,
+    paddingTop: isMobileDevice() ? 0 : 75
   },
   navbarItemContainer: {
     flex: isMobileDevice() ? 1 : -1
   },
   navbarItem: {
-    paddingVertical: 12,
+    paddingVertical: isMobileDevice() ? 12 : 25,
     flexDirection:'column',
     justifyContent: 'center',
     alignItems: 'center'
