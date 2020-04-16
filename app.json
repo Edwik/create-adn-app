@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "create-adn-app",
+    "name": "Edge Capacity",
+    "slug": "edge-capacity",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -12,19 +12,18 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
+    "splash": {
+      "backgroundColor": "#000"
+    },
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }

@@ -1,4 +1,5 @@
 import Example from './Example'
+import Splash from './Splash'
 import Login from './Login'
 import ForgotPassword from './ForgotPassword'
 import Dashboard from './Dashboard'
@@ -9,21 +10,28 @@ import Orders from './Orders'
 
 export default [
   {
+    name: 'Splash',
+    path: '/',
+    component: Splash,
+    layout: '/general'
+  },
+  {
     name: 'Example',
-    path: 'example',
-    component: Example
+    path: 'loads/my-available-load',
+    component: Example,
+    layout: '/general'
   },
   {
     name: 'Login',
     path: '/login',
     component: Login,
-    layout: '/auth'
+    layout: '/general'
   },
   {
     name: 'Forgot Password',
     path: '/forgot-password',
     component: ForgotPassword,
-    layout: '/auth'
+    layout: '/general'
   },
   {
     name: 'Dashboard',

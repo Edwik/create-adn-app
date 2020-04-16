@@ -37,14 +37,14 @@ export default function Navbar(props) {
           key={key}
           style={styles.navbarItemContainer}
         >
-          <LinkComponent to={page.path} style={{ textDecorationLine: 'none'}}>
+          <LinkComponent to={`/main${page.path}`} style={{ textDecorationLine: 'none'}}>
             <View style={styles.navbarItem}>
               <Icon
                 style={styles.icon}
                 name={page.name}
                 height='20'
                 width='20'
-                fill={getItemColor(props.location.pathname.startsWith(page.path))}
+                fill={getItemColor(props.location.pathname.includes(page.path))}
               />
               <Txt
                 Key={`navbar${page.name}`}
@@ -52,7 +52,7 @@ export default function Navbar(props) {
                 style={[
                   styles.title,
                   {
-                    color: getItemColor(props.location.pathname.startsWith(page.path))
+                    color: getItemColor(props.location.pathname.includes(page.path))
                   }
                 ]}
               />
@@ -73,13 +73,14 @@ const styles = StyleSheet.create({
     bottom: isMobileDevice() ? 0 : '',
     height: isMobileDevice() ? 'auto' : '100%',
     width: isMobileDevice() ? '100%' : 75,
-    backgroundColor: isMobileDevice() ? Theme.GRAY : Theme.ACTIVE_COLOR
+    backgroundColor: isMobileDevice() ? Theme.GRAY : Theme.ACTIVE_COLOR,
+    paddingTop: isMobileDevice() ? 0 : 75
   },
   navbarItemContainer: {
     flex: isMobileDevice() ? 1 : -1
   },
   navbarItem: {
-    paddingVertical: 12,
+    paddingVertical: isMobileDevice() ? 12 : 25,
     flexDirection:'column',
     justifyContent: 'center',
     alignItems: 'center'

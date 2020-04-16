@@ -6,7 +6,6 @@ import Pages from '../../pages/exportPages'
 const LayoutNavigator = (props) => {
   const { layout, defaultPath } = props
   const layoutPages = Pages.filter(page => page.layout === layout)
-
   return (
     <Switch>
       {
@@ -14,7 +13,7 @@ const LayoutNavigator = (props) => {
           return (
             <Route
               exact
-              path={`${layout !== '/main' ? layout : ''}${page.path}`}
+              path={`${layout !== '/general' ? layout : ''}${page.path}`}
               component={page.component}
               key={index}
             />

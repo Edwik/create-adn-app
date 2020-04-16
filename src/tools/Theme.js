@@ -1,6 +1,6 @@
 import { LIGHT_THEME, DARK_THEME } from '../utils/Colors'
 import { SetTheme } from './../providers/EvergreenThemeProvider/actions'
-import store from './../store'
+import {store} from './../store'
 
 const Theme = (theme) => {
   const getTheme = () => {

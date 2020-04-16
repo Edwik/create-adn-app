@@ -1,4 +1,4 @@
-import { Platform } from 'react-native'
+import { Platform, Dimensions } from 'react-native'
 
 export const isMobileDevice = () => {
   let inAMobileDevice = false
@@ -12,4 +12,9 @@ export const isMobileDevice = () => {
 
   }
   return inAMobileDevice
+}
+
+export const isSmallDevice = () => {
+  const SCREEN_WIDTH = Dimensions.get('window').width
+  return SCREEN_WIDTH < 1100
 }

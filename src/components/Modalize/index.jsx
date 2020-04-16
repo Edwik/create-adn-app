@@ -1,9 +1,15 @@
 import React, { useRef, useEffect } from 'react'
 import { Modalize } from 'react-native-modalize'
 import { StyleSheet, View } from 'react-native'
+import PropTypes from 'prop-types'
 
 export default function ModalizeMobile (props) {
-  const { open, children, onClose } = props
+  const {
+    open,
+    fullView,
+    children,
+    onClose
+  } = props
   const modalRef = useRef(null)
 
   useEffect(() => {
@@ -33,3 +39,17 @@ const styles = StyleSheet.create({
     margin: 30
   }
 })
+
+ModalizeMobile.propTypes = {
+  open: PropTypes.bool,
+  children: PropTypes.element.isRequired,
+  fullView: PropTypes.bool,
+  onClose: PropTypes.func
+}
+
+ModalizeMobile.defaultProps = {
+  open: false,
+  children: '',
+  fullView: false,
+  onClose: () => {}
+}

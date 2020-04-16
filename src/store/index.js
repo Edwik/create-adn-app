@@ -3,6 +3,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import createSagaMiddleware from 'redux-saga'
+import { Platform, AsyncStorage } from 'react-native'
+// import AsyncStorage from '@react-native-community/async-storage';
 
 import reducers from '../pages/exportReducers'
 import sagas from '../pages/exportSagas'
@@ -15,17 +17,17 @@ const reducersCombined = combineReducers(reducers)
 
 // Persist config
 const persistConfig = {
-  key: 'root',
-  storage,
+  key: 'Eah#95/Icad!2020',
+  storage: Platform.OS === 'web' ? storage : AsyncStorage,
   whitelist: ['themeReducer']
 }
 
 // Persist reducer
 const persistedReducers = persistReducer(persistConfig, reducersCombined)
 
+
 // Create store
 const store = createStore(
-  // reducersCombined,
   persistedReducers,
   composeWithDevTools(applyMiddleware(sagaMiddleware))
 )
@@ -34,5 +36,6 @@ const store = createStore(
 sagas.forEach(saga => {
   sagaMiddleware.run(saga)
 })
-export default store
-export const persistor = persistStore(store)
+
+let persistor = persistStore(store)
+export { store, persistor }

@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 
 import withRequestHandler from '../../hoc/withRequestHandler'
-import Txt from '../../components/Txt'
 
 const Loads = (props) => {
   const { 
@@ -15,13 +14,7 @@ const Loads = (props) => {
   } = props
 
   return (
-    <View>
-      <Txt
-        avoid
-        text='Loads'
-        identity='h1'
-      />
-    </View>
+    <View></View>
   )
 }
 

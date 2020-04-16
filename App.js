@@ -2,11 +2,11 @@ import { AppLoading } from 'expo'
 import React, { useState } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import * as Font from 'expo-font'
+import { PersistGate } from 'redux-persist/integration/react'
 
 import AppNavigator from './src/navigation/AppNavigator'
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/lib/integration/react'
-import store, { persistor } from './src/store'
+import { store, persistor } from './src/store'
 import { ElementsThemeProvider } from './src/providers/ElementsThemeProvider'
 
 import ToastComponent from './src/components/Toast'
