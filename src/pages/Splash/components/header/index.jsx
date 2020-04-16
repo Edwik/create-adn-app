@@ -12,10 +12,10 @@ export default function Header(props) {
     <View style={{flex: 1}}>
       <ImageBackground source={Assets.particles} style={{flex: 1}}>
         <View style={{flex: 12, justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{height: 65, width: SCREEN_WIDTH}}>
+          <View style={{height: 65, width: SCREEN_WIDTH, marginBottom: 20}}>
             <ImageComponent name={'logoLight'}/>
           </View>
-          <ActivityIndicator style={{marginTop: 20}} color={'#FFF'}/>
+          <ActivityIndicator color={'#FFF'}/>
         </View>
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={{color: '#FFF'}}>v0.0.1</Text>

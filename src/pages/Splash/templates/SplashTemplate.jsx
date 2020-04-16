@@ -10,7 +10,7 @@ let WIDTH = SCREEN_WIDTH*0.9
 export default function SplashTemplate(props) {
 
   return (
-    <View>
+    <View style={{width: SCREEN_WIDTH, height: SCREEN_HEIGHT}}>
       <Header/>
     </View>
   );

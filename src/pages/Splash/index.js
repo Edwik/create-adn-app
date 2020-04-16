@@ -1,17 +1,24 @@
-import React, {useEffect, useRef} from 'react'
-import { SafeAreaView, Dimensions } from 'react-native'
-
+import React from 'react'
+import { connect } from 'react-redux'
+import withRequestHandler from '../../hoc/withRequestHandler'
 import SplashTemplate from './templates/SplashTemplate'
-let SCREEN_WIDTH = Dimensions.get('window').width
-let SCREEN_HEIGHT = Dimensions.get('window').height
 
-export default function Splash({ history }) {
+function Splash({ history, responseHandler, TOKEN }) {
 
-  useEffect( ()=>{
+  const onSuccess = () => {
+
     setTimeout( ()=>{
-      history.push('/login')
-    },2500)
-  },[])
+      return history.push('/main/dashboard')
+    }, 2500)
+  }
+
+  const onFail = () => {
+    setTimeout( ()=>{
+      return history.push('/login')
+    }, 2500)
+  }
+
+  responseHandler({status: 200, data: TOKEN}, onSuccess, onFail)
 
   return (
     // <SafeAreaView style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH }}>
@@ -19,3 +26,12 @@ export default function Splash({ history }) {
     // </SafeAreaView>
   );
 }
+
+const mapStateToProps = (state, props) => {
+  return {
+    TOKEN: state.initReducers.TOKEN
+  }
+}
+
+const redux = connect(mapStateToProps, null )(Splash)
+export default withRequestHandler ( !redux ? Login : redux )

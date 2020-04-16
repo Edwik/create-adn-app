@@ -11,25 +11,27 @@ import Orders from './Orders'
 export default [
   {
     name: 'Splash',
-    path: '',
-    component: Splash
+    path: '/',
+    component: Splash,
+    layout: '/general'
   },
   {
     name: 'Example',
     path: 'loads/my-available-load',
-    component: Example
+    component: Example,
+    layout: '/general'
   },
   {
     name: 'Login',
     path: '/login',
     component: Login,
-    layout: '/auth'
+    layout: '/general'
   },
   {
     name: 'Forgot Password',
     path: '/forgot-password',
     component: ForgotPassword,
-    layout: '/auth'
+    layout: '/general'
   },
   {
     name: 'Dashboard',

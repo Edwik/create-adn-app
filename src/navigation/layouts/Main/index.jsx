@@ -10,7 +10,7 @@ const MainLayout = (props) => {
       <SafeAreaView style={styles.safeAreaContainer}>
         <LayoutNavigator
           layout='/main'
-          defaultPath='/dashboard'
+          defaultPath='/main/dashboard'
         />
       </SafeAreaView>
       <Navbar {...props} />

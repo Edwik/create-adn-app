@@ -1,37 +1,33 @@
 import React from 'react'
 import { Router, Route, Switch, Redirect } from './AppRouterSources'
-
-import { isAuthenticated } from '../tools/auth'
-import AuthLayout from './layouts/Auth'
+import { connect } from 'react-redux'
+import GeneralLayout from './layouts/General'
 import MainLayout from './layouts/Main'
 import AccountLayout from './layouts/Account'
 
 import BasicPageComponent from './../components/BasicPageComponent'
 
-function AppNavigator() {
+function AppNavigator({Auth}) {
   return (
     <Router>
       <Switch>
         <Route
-          path={`/auth`}
-          render={props => !isAuthenticated()
-            ? <AuthLayout {...props} />
-            : <Redirect to='/dashboard' />
-          }
-        />
-        <Route
-          path={`/`}
-          render={props => isAuthenticated()
+          path={`/main`}
+          render={props => Auth.length>0
             ? <MainLayout {...props} />
-            : <Redirect to='/auth/login' />
+            : <Redirect to='/' />
           }
         />
         <Route
           path={`/account`}
-          render={props => isAuthenticated()
+          render={props => Auth.length>0
             ? <AccountLayout {...props} />
-            : <Redirect to='/auth/login' />
+            : <Redirect to='/' />
           }
+        />
+        <Route
+          path={`/`}
+          render={props => <GeneralLayout {...props} />}
         />
         <Route component={BasicPageComponent} />
       </Switch>
@@ -39,4 +35,11 @@ function AppNavigator() {
   )
 }
 
-export default AppNavigator
+const mapStateToProps = (state, props) => {
+  return {
+    Auth: state.initReducers.TOKEN
+  }
+}
+
+const redux = connect(mapStateToProps, null )(AppNavigator)
+export default redux
