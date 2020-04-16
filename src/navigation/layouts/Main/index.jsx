@@ -17,7 +17,7 @@ const MainLayout = (props) => {
   const [ currentPage, setCurrentPage ] = useState({})
   useEffect(() => {
     if (props.location.pathname !== '/') {
-      setCurrentPage(Pages.find(page => page.path === props.location.pathname))
+      setCurrentPage(Pages.find(page => props.location.pathname.includes(page.path)))
     }
   }, [props.location.pathname])
 
@@ -28,7 +28,7 @@ const MainLayout = (props) => {
         <ScrollView>
           <LayoutNavigator
             layout='/main'
-            defaultPath='/main/dashboard'
+            defaultPath='/dashboard'
           />
         </ScrollView>
       </SafeAreaView>

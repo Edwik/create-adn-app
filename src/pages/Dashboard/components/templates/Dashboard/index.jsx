@@ -2,7 +2,6 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 
-import Txt from '../../../../../components/Txt'
 import PreferredLanes from '../../PreferredLanes'
 import QuickNumbers from '../../QuickNumbers'
 import Calendar from '../../Calendar'
