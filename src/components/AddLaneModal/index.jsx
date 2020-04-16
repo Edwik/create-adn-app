@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import PropTypes from 'prop-types'
 
-import Modalize from '../Modalize'
+import Modal from '../Modal'
+import Txt from '../Txt'
+import NavigationTopbar from '../NavigationTopbar'
 
 export default function AddLaneModal(props) {
   const {
@@ -20,13 +23,27 @@ export default function AddLaneModal(props) {
   }, [open])
 
   return (
-    <Modalize
-      open
-      fullView
+    <Modal
+      modalContainer={styles.modalContainer}
+      open={open}
+      isFullView
     >
-    </Modalize>
+      <SafeAreaView>
+        <NavigationTopbar
+          onGoBack={onClose}
+        />
+      </SafeAreaView>
+    </Modal>
   )
 }
+
+const styles = StyleSheet.create({
+  modalContainer: {
+    flex: 0,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
+  }
+})
 
 AddLaneModal.propTypes = {
   open: PropTypes.bool,
