@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 
@@ -12,7 +12,10 @@ const Dashboard = (props) => {
     setLoading,
     error,
     setError,
-    responseHandler
+    responseHandler,
+    initRequest,
+    FetchQuickNumbers,
+    QUICK_NUMBERS
   } = props
 
   const lanes = [
@@ -53,11 +56,32 @@ const Dashboard = (props) => {
       "equipmentType": ""
     },
   ]
+  const [loadingQuickNumbers, setLoadingQuickNumbers] = useState(false)
+
+  initRequest(() => {
+    setLoadingQuickNumbers(true)
+    FetchQuickNumbers()
+  })
+
+  const onSuccessQuickNumbers = () => {
+    setLoadingQuickNumbers(false)
+  }
+
+  const onFailQuickNumbers = () => {
+    setLoadingQuickNumbers(false)
+  }
+
+  responseHandler(QUICK_NUMBERS, onSuccessQuickNumbers, onFailQuickNumbers)
 
   return (
     <View>
       <DashboardTemplate
         lanes={lanes}
+        loadingQuickNumbers={loadingQuickNumbers}
+        quickNumbers={QUICK_NUMBERS.status === 200
+          ? QUICK_NUMBERS.res.data
+          : {}
+        }
       />
     </View>
   )

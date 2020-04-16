@@ -6,6 +6,7 @@ import LayoutNavigator from '../LayoutNavigator'
 import Navbar from '../../../components/Navbar'
 import Topbar from '../../../components/Topbar'
 import Pages from '../../../pages/exportPages'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const MainLayout = (props) => {
   const LayoutContainer = (props) => {
@@ -24,10 +25,12 @@ const MainLayout = (props) => {
     <React.Fragment>
       <SafeAreaView style={styles.safeAreaContainer}>
         <Topbar title={currentPage.name} />
-        <LayoutNavigator
-          layout='/main'
-          defaultPath='/dashboard'
-        />
+        <ScrollView>
+          <LayoutNavigator
+            layout='/main'
+            defaultPath='/main/dashboard'
+          />
+        </ScrollView>
       </SafeAreaView>
       <Navbar {...props} />
     </React.Fragment>
@@ -38,7 +41,8 @@ const styles = StyleSheet.create({
   safeAreaContainer: {
     flex: 1,
     width: '100%',
-    paddingLeft: isMobileDevice() ? 0 : 75
+    paddingLeft: isMobileDevice() ? 0 : 75,
+    marginBottom: 66
   }
 })
 

@@ -7,7 +7,8 @@ import QuickNumberCard from '../QuickNumberCard'
 
 export default function QuickNumbers(props) {
   const {
-    quickNumbers
+    quickNumbers,
+    loading
   } = props
 
   return (
@@ -20,7 +21,7 @@ export default function QuickNumbers(props) {
       >
         <QuickNumberCard
           title='All available loads'
-          number={Math.floor(Math.random() * 999)}
+          number={quickNumbers.all_available_loads}
           color='ORANGE'
           style={[
             styles.cardContainer,
@@ -29,7 +30,7 @@ export default function QuickNumbers(props) {
         />
         <QuickNumberCard
           title='My available offers'
-          number={Math.floor(Math.random() * 999)}
+          number={quickNumbers.my_available_offers}
           color='GREEN'
           style={styles.cardContainer}
         />
@@ -37,7 +38,7 @@ export default function QuickNumbers(props) {
       <View style={styles.column}>
         <QuickNumberCard
           title='Order pickup'
-          number={Math.floor(Math.random() * 999)}
+          number={quickNumbers.order_pickup}
           color='BLUE'
           style={[
             styles.cardContainer,
@@ -46,7 +47,7 @@ export default function QuickNumbers(props) {
         />
         <QuickNumberCard
           title='Order delivery'
-          number={0}
+          number={quickNumbers.order_delivery}
           color='PINK'
           style={styles.cardContainer}
         />
@@ -76,9 +77,11 @@ const styles = StyleSheet.create({
 })
 
 QuickNumbers.propTypes = {
-  quickNumbers: PropTypes.array.isRequired
+  quickNumbers: PropTypes.object.isRequired,
+  loading: PropTypes.bool
 }
 
 QuickNumbers.defaultProps = {
-  quickNumbers: []
+  quickNumbers: {},
+  loading: false
 }

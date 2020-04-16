@@ -10,7 +10,8 @@ export default function BasicPageComponent(props) {
     containerStyle,
     style,
     width,
-    height
+    height,
+    resizeMode
   } = props
 
   return(
@@ -25,7 +26,7 @@ export default function BasicPageComponent(props) {
       ]}
     >
       <Image
-        resizeMode='contain'
+        resizeMode={resizeMode}
         source={Assets[name]}
         style={[
           style,
@@ -49,11 +50,13 @@ const styles = StyleSheet.create({
 BasicPageComponent.propTypes = {
   name:	PropTypes.string,
   containerStyle: ViewPropTypes.style,
-  style: ViewPropTypes.style
+  style: ViewPropTypes.style,
+  resizeMode:	PropTypes.string
 }
 
 BasicPageComponent.defaultProps = {
   name: 'noImage',
 	containerStyle: null,
-	style: null
+  style: null,
+  resizeMode: 'contain'
 }

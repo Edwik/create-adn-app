@@ -26,7 +26,7 @@ export default function QuickNumberCard (props) {
       >
         <Txt
           avoid
-          text={number.toString()}
+          text={number ? number.toString() : '- -'}
           identity='h1'
           isCapitalize={false}
           style={styles.text}
@@ -61,14 +61,14 @@ const styles = StyleSheet.create({
 
 QuickNumberCard.propTypes = {
   title: PropTypes.string.isRequired,
-  number: PropTypes.number.isRequired,
+  number: PropTypes.number,
   color: PropTypes.string.isRequired,
   style: ViewPropTypes.style
 }
 
 QuickNumberCard.defaultProps = {
   title: '',
-  number: 0,
+  number: null,
   color: '',
   style: null
 }

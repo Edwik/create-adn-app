@@ -22,6 +22,7 @@ export default function Topbar(props) {
         style={styles.avatar}
         width={40}
         height={40}
+        resizeMode='cover'
       />
     </View>
   )
@@ -35,7 +36,8 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   avatarContainer: {
-    resizeMode: 'cover'
+    borderRadius: 50,
+    overflow: 'hidden'
   },
   avatar: {
   }

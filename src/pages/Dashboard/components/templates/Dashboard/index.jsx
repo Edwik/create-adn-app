@@ -12,7 +12,8 @@ export default function DashboardTemplate(props) {
   const {
     lanes,
     quickNumbers,
-    events
+    events,
+    loadingQuickNumbers
   } = props
 
   return (
@@ -22,6 +23,7 @@ export default function DashboardTemplate(props) {
           lanes={lanes}
         />
         <QuickNumbers
+          loading={loadingQuickNumbers}
           quickNumbers={quickNumbers}
         />
       </View>
@@ -48,12 +50,14 @@ const styles = StyleSheet.create({
 
 DashboardTemplate.propTypes = {
   lanes: PropTypes.array.isRequired,
-  quickNumbers: PropTypes.array.isRequired,
-  events: PropTypes.array.isRequired
+  quickNumbers: PropTypes.object.isRequired,
+  events: PropTypes.array.isRequired,
+  loadingQuickNumbers: PropTypes.bool
 }
 
 DashboardTemplate.defaultProps = {
   lanes: [],
-  quickNumbers: [],
-  events: []
+  quickNumbers: {},
+  events: [],
+  loadingQuickNumbers: false
 }
