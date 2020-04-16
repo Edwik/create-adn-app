@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { View, Image, StyleSheet, ViewPropTypes } from 'react-native'
+import { View, Image, ViewPropTypes } from 'react-native'
 
 import Assets from './../../../assets/export'
-import { StylesProvider } from '@material-ui/core'
 
 export default function ImageComponent(props) {
 
@@ -16,7 +15,7 @@ export default function ImageComponent(props) {
 
 ImageComponent.propTypes = {
   name:     PropTypes.string,
-  style:    StylesProvider.style,
+  style:    ViewPropTypes.style,
   mode:     PropTypes.string
 };
 
