@@ -3,60 +3,24 @@ import PropTypes from 'prop-types'
 import { View, Image, StyleSheet, ViewPropTypes } from 'react-native'
 
 import Assets from './../../../assets/export'
+import { StylesProvider } from '@material-ui/core'
 
-export default function BasicPageComponent(props) {
-  const {
-    name,
-    containerStyle,
-    style,
-    width,
-    height,
-    resizeMode
-  } = props
+export default function ImageComponent(props) {
 
   return(
-    <View 
-      style={[
-        containerStyle,
-        styles.container,
-        {
-          width,
-          height
-        }
-      ]}
-    >
-      <Image
-        resizeMode={resizeMode}
-        source={Assets[name]}
-        style={[
-          style,
-          {
-            width,
-            height
-          }
-        ]}
-      />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
+        <Image resizeMode={props.mode} source={Assets[props.name]} style={{...props.style, width: '100%', height: '100%' }} />
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+ImageComponent.propTypes = {
+  name:     PropTypes.string,
+  style:    StylesProvider.style,
+  mode:     PropTypes.string
+};
 
-BasicPageComponent.propTypes = {
-  name:	PropTypes.string,
-  containerStyle: ViewPropTypes.style,
-  style: ViewPropTypes.style,
-  resizeMode:	PropTypes.string
-}
-
-BasicPageComponent.defaultProps = {
-  name: 'noImage',
-	containerStyle: null,
-  style: null,
-  resizeMode: 'contain'
-}
+ImageComponent.defaultProps = {
+    name:     'noImage',
+    mode:     'contain'
+};

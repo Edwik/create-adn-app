@@ -6,10 +6,13 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch(action.type){
+
     case actionsConstants.successSendForgotPasswordEmail :
       return { ...state, sendForgotPasswordEmailResponse: action.payload}
+
     case actionsConstants.failSendForgotPasswordEmail:
       return { ...state, sendForgotPasswordEmailResponse: action.payload}
+      
     default:
       return state
   }

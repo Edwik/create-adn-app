@@ -1,13 +1,13 @@
 import React from 'react'
 import LayoutNavigator from '../LayoutNavigator'
 
-const AuthLayout = () => {
+const GeneralLayout = () => {
   return (
     <LayoutNavigator
-      layout='/auth'
-      defaultPath='/auth/login'
+      layout='/general'
+      defaultPath='/'
     />
   )
 }
 
-export default AuthLayout
+export default GeneralLayout

@@ -16,14 +16,13 @@ export default function Topbar(props) {
         identity='h3'
         isCapitalize={false}
       />
+      <View style={styles.avatarContainer}>
       <Image
         name='defaultAvatar'
-        containerStyle={styles.avatarContainer}
         style={styles.avatar}
-        width={40}
-        height={40}
-        resizeMode='cover'
+        mode='cover'
       />
+      </View>
     </View>
   )
 }
@@ -36,10 +35,14 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   avatarContainer: {
+    height: 40,
+    width: 40,
     borderRadius: 50,
     overflow: 'hidden'
   },
   avatar: {
+    height: 40,
+    width: 40,
   }
 })
 

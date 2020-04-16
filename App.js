@@ -1,12 +1,13 @@
 import { AppLoading } from 'expo';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { View, ActivityIndicator } from 'react-native'
 import * as Font from 'expo-font'
+import { PersistGate } from 'redux-persist/integration/react'
 
 import AppNavigator from './src/navigation/AppNavigator'
 console.disableYellowBox = true;
 import { Provider } from 'react-redux'
-import store from './src/store'
+import {store, persistor} from './src/store'
 import { ElementsTheme, MaterialUITheme } from './src/tools/Theme'
 import { ThemeProvider as ElementsThemeProvider } from 'react-native-elements'
 import { ThemeProvider as MaterialUIThemeProvider } from '@material-ui/core/styles'
@@ -41,21 +42,31 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <MaterialUIThemeProvider theme={MaterialUITheme}>
-        <ElementsThemeProvider theme={ElementsTheme}>
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            { loading ? (
-              <AppLoading
-                startAsync={loadFonts}
-                onError={()=>console.log('error loading page')}
-                onFinish={() => setLoading(false)}
-              />
-            ): <AppNavigator/> }
-          </View>
-          <ToastComponent />
-          <ErrorModal />
-        </ElementsThemeProvider>
-      </MaterialUIThemeProvider>
+      <PersistGate loading={<ActivityIndicator/>} persistor={persistor}>
+        <MaterialUIThemeProvider theme={MaterialUITheme}>
+          <ElementsThemeProvider theme={ElementsTheme}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              { loading ? (
+                <AppLoading
+                  startAsync={loadFonts}
+                  onError={()=>console.log('error loading page')}
+                  onFinish={() => setLoading(false)}
+                />
+              ): <AppNavigator/> }
+            </View>
+            <ToastComponent />
+            <ErrorModal />
+          </ElementsThemeProvider>
+        </MaterialUIThemeProvider>
+      </PersistGate>
     </Provider>
   );
 }
+
+/**
+ * "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+ */
