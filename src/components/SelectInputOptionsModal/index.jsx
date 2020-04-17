@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     marginVertical: 20,
     borderWidth: 1,
-    borderColor: Theme.NORMAL_COLOR,
+    borderColor: Theme().NORMAL_COLOR,
     borderRadius: 3,
     flexDirection: 'row',
     alignItems: 'center'
@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
   },
   multiselectedBadget: {
     marginRight: 5,
-    backgroundColor: Theme.NORMAL_COLOR
+    backgroundColor: Theme().NORMAL_COLOR
   },
   multiselectedOption: {
     flexDirection: 'row',

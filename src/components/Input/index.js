@@ -60,7 +60,7 @@ export default function InputComponent(props) {
       errorMessage={error}
       errorStyle={[
         styles.error,
-        { color: Theme.ERROR_COLOR }
+        { color: Theme().ERROR_COLOR }
       ]}
       containerStyle={styles.container}
       inputStyle={[

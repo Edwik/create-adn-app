@@ -16,7 +16,7 @@ export default function CheckBox(props) {
           name='Check'
           width={size}
           height={size}
-          fill={Theme.PRIMARY_TEXT}
+          fill={Theme().PRIMARY_TEXT}
         />
       }
       uncheckedIcon={<React.Fragment/>}

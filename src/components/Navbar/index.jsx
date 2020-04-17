@@ -24,8 +24,8 @@ export default function Navbar(props) {
 
   const getItemColor = (currentPath) => {
     return currentPath
-      ? isMobileDevice() ? Theme.ACTIVE_COLOR : Theme.TEXT_AND_ICONS
-      : Theme.NORMAL_COLOR
+      ? isMobileDevice() ? Theme().ACTIVE_COLOR : Theme().TEXT_AND_ICONS
+      : Theme().NORMAL_COLOR
   }
 
   return (
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     bottom: isMobileDevice() ? 0 : '',
     height: isMobileDevice() ? 'auto' : '100%',
     width: isMobileDevice() ? '100%' : 75,
-    backgroundColor: isMobileDevice() ? Theme.GRAY : Theme.ACTIVE_COLOR,
+    backgroundColor: isMobileDevice() ? Theme().GRAY : Theme().ACTIVE_COLOR,
     paddingTop: isMobileDevice() ? 0 : 75
   },
   navbarItemContainer: {

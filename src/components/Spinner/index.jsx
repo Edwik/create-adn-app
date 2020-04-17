@@ -15,7 +15,7 @@ export default function Spinner(props) {
     >
       <ActivityIndicator
         size={size}
-        color={Theme.PRIMARY_TEXT}
+        color={Theme().PRIMARY_TEXT}
       />
     </View>
   )

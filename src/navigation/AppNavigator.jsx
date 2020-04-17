@@ -8,6 +8,7 @@ import AccountLayout from './layouts/Account'
 import BasicPageComponent from './../components/BasicPageComponent'
 
 function AppNavigator({Auth}) {
+  console.log(Auth.length>0)
   return (
     <Router>
       <Switch>

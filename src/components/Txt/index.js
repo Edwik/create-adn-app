@@ -27,7 +27,7 @@ export default function Txt(props) {
       style={[
         Identity.Font[props.identity],
         {
-          color: Theme[props.color]
+          color: Theme()[props.color]
         },
         props.style
       ]}

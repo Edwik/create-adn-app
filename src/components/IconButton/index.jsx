@@ -26,7 +26,7 @@ export default function IconButton(props) {
         {
           width: size,
           height: size,
-          backgroundColor: Theme[color] || Theme.PRIMARY_TEXT
+          backgroundColor: Theme()[color] || Theme().PRIMARY_TEXT
         }
       ]}
       icon={
@@ -34,7 +34,7 @@ export default function IconButton(props) {
           name={icon}
           width='22'
           height='22'
-          fill={Theme[iconColor] || Theme.TEXT_AND_ICONS}
+          fill={Theme()[iconColor] || Theme().TEXT_AND_ICONS}
         />
       }
       onPress={onPress}

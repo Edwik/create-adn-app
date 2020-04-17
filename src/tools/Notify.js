@@ -15,16 +15,16 @@ const Notify = (message, type) => {
 
 const styles = StyleSheet.create({
   info: {
-    backgroundColor: Theme.INFO_COLOR
+    backgroundColor: Theme().INFO_COLOR
   },
   warning: {
-    backgroundColor: Theme.WARNING_COLOR
+    backgroundColor: Theme().WARNING_COLOR
   },
   success: {
-    backgroundColor: Theme.SUCCESS_COLOR
+    backgroundColor: Theme().SUCCESS_COLOR
   },
   error: {
-    backgroundColor: Theme.ERROR_COLOR}
+    backgroundColor: Theme().ERROR_COLOR}
 })
 
 export { Notify }

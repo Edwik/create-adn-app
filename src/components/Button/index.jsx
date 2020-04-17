@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: '100%',
     height: 50,
-    backgroundColor: Theme.PRIMARY_TEXT
+    backgroundColor: Theme().PRIMARY_TEXT
   },
   textStyle: {
     textTransform: 'capitalize',

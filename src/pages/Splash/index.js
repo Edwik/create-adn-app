@@ -18,7 +18,7 @@ function Splash({ history, responseHandler, TOKEN }) {
     }, 2500)
   }
 
-  responseHandler({status: 200, data: TOKEN}, onSuccess, onFail)
+  responseHandler({status: TOKEN ? 200 : 500, data: TOKEN}, onSuccess, onFail)
 
   return (
     // <SafeAreaView style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH }}>

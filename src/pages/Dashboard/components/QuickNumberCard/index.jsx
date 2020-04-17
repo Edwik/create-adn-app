@@ -20,7 +20,7 @@ export default function QuickNumberCard (props) {
         containerStyle={[
           styles.card,
           {
-            backgroundColor: Theme[color]
+            backgroundColor: Theme()[color]
           }
         ]}
       >

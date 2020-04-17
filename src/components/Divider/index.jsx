@@ -8,7 +8,7 @@ export default function DividerComponent (props) {
   return (
     <View style={containerStyle}>
       <Divider style={{
-        backgroundColor: Theme.DIVIDER_COLOR,
+        backgroundColor: Theme().DIVIDER_COLOR,
         width: '100%'
       }} />
     </View>
