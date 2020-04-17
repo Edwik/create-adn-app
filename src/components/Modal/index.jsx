@@ -14,55 +14,59 @@ export default function ModalMobile (props) {
     action,
     onAction,
     onClose,
-    isCornerModal
+    isCornerModal,
+    isFullView,
+    containerStyle
   } = props
 
   return (
     <Modal
       animationType='slide'
-      transparent={true}
+      transparent={!isFullView}
       visible={open}
       onDismiss={onClose}
     >
       <View
         style={[
-          styles.centeredView,
+          isFullView ? containerStyle : styles.centeredView,
           {
             justifyContent: isCornerModal ? 'flex-end' : 'center'
           }
         ]}
       >
-        <View style={[
-          styles.modalView,
-          Identity.Shadow.Main
-        ]}>
-          <View style={styles.header}>
-            <Txt
-              avoid
-              text={title}
-              identity='subtitleBold'
-              isCapitalize={false}
-            />
-            <TouchableOpacity onPress={onClose}>
-              <Icon
-                name='Exit'
-                width='10'
-                height='10'
+        {isFullView
+          ? children
+          : <View style={[
+            styles.modalView,
+            Identity.Shadow.Main
+          ]}>
+            <View style={styles.header}>
+              <Txt
+                avoid
+                text={title}
+                identity='subtitleBold'
+                isCapitalize={false}
               />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.content}>
-            {children}
-          </View>
-          <View style={styles.footer}>
-            <View>
-              <ButtonComponent
-                title={action}
-                onPress={onAction}
-              />
+              <TouchableOpacity onPress={onClose}>
+                <Icon
+                  name='Exit'
+                  width='10'
+                  height='10'
+                />
+              </TouchableOpacity>
             </View>
-          </View>
-        </View>
+            <View style={styles.content}>
+              {children}
+            </View>
+            <View style={styles.footer}>
+              <View>
+                <ButtonComponent
+                  title={action}
+                  onPress={onAction}
+                />
+              </View>
+            </View>
+          </View>}
       </View>
     </Modal>
   )
